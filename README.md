@@ -106,7 +106,9 @@ Some expert/backend APIs differ. Direct DOCX access may use `python-docx`. HWPX 
 
 ## Tested in practice, not only against XML
 
-The project has documented regression tests and Windows native Office validation. The 2026-10-18 Windows QA recorded **48/48 document open-save validations and 48/48 PDF exports** for 24 synthetic business scenarios × 2 formats. These were run on the supplied historical build; they **are not a claim that this reorganized release candidate has passed Windows native validation**.
+The project has documented regression tests and Windows native Office validation. A historical build passed **48/48 document open-save validations and 48/48 PDF exports** for 24 synthetic business scenarios × 2 formats. That historical run is separate from release-candidate testing.
+
+**New 0.44.0rc1 Windows Word/Hancom native acceptance (2026-10-18):** 11/11 focused cases PASS, 7/7 extended QA stages PASS, and 0 failed/errored/timed out. The extended cases include 523-paragraph / 9-table and 1,103-paragraph / 13-table documents with actual Word/Hancom reopen-save roundtrips and semantic inspections. The QA archive also reports 23 Common API, 52 python-docx port, 4 bold-normalization and 16 compare-safety passing tests; these are subtests, **not additional native case totals**. The RC-specific archive does **not** include a fresh PDF-export or pixel-layout comparison run. [Read the precise RC evidence and limitations](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md).
 
 [Portable test tiers](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md) · [Test evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/README.md) · [Windows QA](https://github.com/rydolabs/PyWPDoc/tree/main/tests/native) · [QA generators](https://github.com/rydolabs/PyWPDoc/tree/main/tests/generators/business_docs)
 
@@ -125,12 +127,12 @@ under `pywpdoc` (including the private `pywpdoc._engine` package).
 
 The engine is an **implementation detail**, not a second product to install.
 Use `from pywpdoc import Document` for application code. The reorganized package
-has not yet undergone its own Windows native Office acceptance test.
+passed its focused 0.44.0rc1 Windows native Office acceptance cases (see [RC evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md)).
 
 ## More information
 
 [User guide](https://github.com/rydolabs/PyWPDoc/blob/main/docs/USAGE.md) · [API strategy](https://github.com/rydolabs/PyWPDoc/blob/main/docs/API_STRATEGY.md) · [Quality gates](https://github.com/rydolabs/PyWPDoc/blob/main/QUALITY_GATES.md) · [Changelog](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [Security](https://github.com/rydolabs/PyWPDoc/blob/main/SECURITY.md) · [Contributing](https://github.com/rydolabs/PyWPDoc/blob/main/CONTRIBUTING.md)
 
-This repository is source and test code. It does not include Microsoft Word or Hancom Office. **Current release candidate: `0.44.0rc1` (review build; not yet published).** There is no live CI badge until the Actions workflow runs successfully.
+This repository is source and test code. It does not include Microsoft Word or Hancom Office. **Current release candidate: `0.44.0rc1` (review build; not yet published).** The [GitHub Actions matrix](https://github.com/rydolabs/PyWPDoc/actions/runs/39137635602) has passed (10/10 jobs).
 
 **License:** [MIT](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE) · © 2026 Rydolabs · [Third-party notices](https://github.com/rydolabs/PyWPDoc/blob/main/THIRD_PARTY_NOTICES.md)
