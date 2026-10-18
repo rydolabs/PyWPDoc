@@ -1,0 +1,88 @@
+{
+  "scenario_id": "hwpx-cross-document-parashape-v0370",
+  "release": "0.37.0-candidate",
+  "status": "external-hancom-2020-gui-gate-pending",
+  "basis": [
+    "v0.36.0 ParaShape GUI gate user-confirmed in Hancom 2020",
+    "v0.37.0 imports/remaps OLD-only paraPr dependency resources into the NEW review clone"
+  ],
+  "old": {
+    "file": "parashape_crossdoc_old_v0370.hwpx",
+    "sha256": "ed51c3c1e881becf4d808dd4da649aaee38a4043899dc4101d8139e193eb0269"
+  },
+  "new": {
+    "file": "parashape_crossdoc_new_v0370.hwpx",
+    "sha256": "6232192bfac86341991abd3a455416939c6f9a9851afcc78e0082c6c5cc3c2ac"
+  },
+  "tracked": {
+    "file": "parashape_crossdoc_tracked_review_v0370.hwpx",
+    "sha256": "3c0a9c440aa3674c43320746db93dd3c385b992786be7db5a2a8e90b6a0c6ac6"
+  },
+  "expected": {
+    "track_change_type": "ParaShape",
+    "body_anchor": "hp:p@paraTcId",
+    "old_shape_attribute": "parashapeID",
+    "count": 3,
+    "text_insert_delete_markers": 0,
+    "run_format_anchors": 0,
+    "resource_imports": [
+      "paraPr",
+      "numbering",
+      "bullet"
+    ]
+  },
+  "cases": [
+    {
+      "text": "Cross-document spacing: Alpha Beta",
+      "change_id": "1",
+      "old_paraPr": "24",
+      "new_paraPr": "21",
+      "old_heading": {
+        "type": "NONE",
+        "idRef": "0"
+      },
+      "new_heading": {
+        "type": "NONE",
+        "idRef": "0"
+      },
+      "old_line_spacing": "177",
+      "new_line_spacing": "190"
+    },
+    {
+      "text": "Numbering resource: Gamma Delta",
+      "change_id": "2",
+      "old_paraPr": "25",
+      "new_paraPr": "22",
+      "old_heading": {
+        "type": "NUMBER",
+        "idRef": "3"
+      },
+      "new_heading": {
+        "type": "NUMBER",
+        "idRef": "2"
+      },
+      "old_line_spacing": "160",
+      "new_line_spacing": "160",
+      "old_numbering_start": "3",
+      "new_numbering_start": "7"
+    },
+    {
+      "text": "Bullet resource: Sample Text",
+      "change_id": "3",
+      "old_paraPr": "26",
+      "new_paraPr": "23",
+      "old_heading": {
+        "type": "BULLET",
+        "idRef": "2"
+      },
+      "new_heading": {
+        "type": "BULLET",
+        "idRef": "1"
+      },
+      "old_line_spacing": "160",
+      "new_line_spacing": "160",
+      "old_bullet_char": "◈",
+      "new_bullet_char": "•"
+    }
+  ]
+}

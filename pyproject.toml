@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pywpdoc"
+version = "0.44.0rc1"
+description = "One Python API for DOCX and HWPX creation, editing, templates, and comparison"
+keywords = ["docx", "hwpx", "hangul", "word-processing", "document-automation", "track-changes"]
+readme = {file = "README.md", content-type = "text/markdown"}
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = ["lxml>=4.9"]
+
+[project.urls]
+Homepage = "https://github.com/rydolabs/PyWPDoc"
+Source = "https://github.com/rydolabs/PyWPDoc"
+Issues = "https://github.com/rydolabs/PyWPDoc/issues"
+Documentation = "https://github.com/rydolabs/PyWPDoc/tree/main/docs"
+Changelog = "https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+unified = ["python-docx>=1.2,<2"]
+test = ["pytest>=7", "python-docx>=1.2,<2"]
+docs = ["mkdocs-material>=9,<10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["pywpdoc*"]
+exclude = ["tests*", "examples*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+"pywpdoc._engine" = ["data/*.hwpx", "py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+ "common_api: shared behavior contract tested on DOCX and HWPX",
+ "parity: observable behavior checked against python-docx public API",
+ "regression: issue-derived and previously failed behavior",
+ "negative: invalid inputs and fail-closed behavior",
+ "native: requires Microsoft Word/Hancom Windows COM (separate runner)",
+ "performance: nonblocking performance benchmark, separate cadence",
+]

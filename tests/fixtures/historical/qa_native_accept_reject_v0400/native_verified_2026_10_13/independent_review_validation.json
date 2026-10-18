@@ -1,0 +1,84 @@
+{
+  "checks": {
+    "original_copies_identical": true,
+    "original_markers_present": true,
+    "accept_markers_resolved": true,
+    "reject_markers_resolved": true,
+    "tracked_header_revisions_removed": true,
+    "10_tables_preserved": true,
+    "accept_T01_INSERT": true,
+    "accept_T02_DELETE": true,
+    "accept_T03_REPLACE": true,
+    "accept_bold": true,
+    "accept_para": true,
+    "accept_preserves_S06_ROW_INSERT": true,
+    "accept_preserves_S07_ROW_DELETE": true,
+    "accept_preserves_S08_COL_INSERT": true,
+    "accept_preserves_S09_COL_DELETE": true,
+    "accept_preserves_S10_CELL_MERGE": true,
+    "reject_T01_INSERT": true,
+    "reject_T02_DELETE": true,
+    "reject_T03_REPLACE": true,
+    "reject_bold": true,
+    "reject_para": true,
+    "reject_preserves_S06_ROW_INSERT": true,
+    "reject_preserves_S07_ROW_DELETE": true,
+    "reject_preserves_S08_COL_INSERT": true,
+    "reject_preserves_S09_COL_DELETE": true,
+    "reject_preserves_S10_CELL_MERGE": true
+  },
+  "total": 26,
+  "passed": 26,
+  "failed": [],
+  "input_source_sha256": "12d90536d2327ba4c2ddf054a73b38c0e6edf6a6b4ad1d0a6fb56a659277bd83",
+  "accept_sha256": "d1cd886c36f06ee84fb0f06417dd69156907fd8b1cbd736d01ff8b6b72fd2245",
+  "reject_sha256": "4f38d9de1c133c7dc7e1f2a2f073b52bbb43dcafd916e0043336a3517145885b",
+  "counts": {
+    "INPUT_ACCEPT_COPY.hwpx": {
+      "sha256": "12d90536d2327ba4c2ddf054a73b38c0e6edf6a6b4ad1d0a6fb56a659277bd83",
+      "markers": 8,
+      "anchors": [
+        [
+          "run",
+          "paraTcId",
+          "6"
+        ],
+        [
+          "p",
+          "paraTcId",
+          "3"
+        ]
+      ],
+      "header_revisions": 6
+    },
+    "INPUT_REJECT_COPY.hwpx": {
+      "sha256": "12d90536d2327ba4c2ddf054a73b38c0e6edf6a6b4ad1d0a6fb56a659277bd83",
+      "markers": 8,
+      "anchors": [
+        [
+          "run",
+          "paraTcId",
+          "6"
+        ],
+        [
+          "p",
+          "paraTcId",
+          "3"
+        ]
+      ],
+      "header_revisions": 6
+    },
+    "ACCEPT_ALL_NATIVE.hwpx": {
+      "sha256": "d1cd886c36f06ee84fb0f06417dd69156907fd8b1cbd736d01ff8b6b72fd2245",
+      "markers": 0,
+      "anchors": [],
+      "header_revisions": 0
+    },
+    "REJECT_ALL_NATIVE.hwpx": {
+      "sha256": "4f38d9de1c133c7dc7e1f2a2f073b52bbb43dcafd916e0043336a3517145885b",
+      "markers": 0,
+      "anchors": [],
+      "header_revisions": 0
+    }
+  }
+}

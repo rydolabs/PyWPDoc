@@ -1,0 +1,56 @@
+site_name: PyWPDoc — DOCX & HWPX Python API
+site_url: https://rydolabs.github.io/PyWPDoc/
+site_description: Verified user guide and API contract for PyWPDoc 0.44.0rc1
+repo_url: https://github.com/rydolabs/PyWPDoc
+repo_name: rydolabs/PyWPDoc
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: [.]
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: getting-started/installation.md
+      - Quickstart: getting-started/quickstart.md
+      - API layers: getting-started/concepts.md
+  - User guide:
+      - Create & edit: guide/create-edit.md
+      - Tables: guide/tables.md
+      - Pictures & sections: guide/pictures-sections.md
+      - Find & replace: guide/search-replace.md
+      - Templates: guide/templates.md
+      - Compare revisions: guide/compare.md
+  - API reference:
+      - Document: reference/document.md
+      - Results & errors: reference/results-errors.md
+      - Format-specific: reference/formats.md
+  - Compatibility: compatibility.md
+  - Known limitations: limitations.md
+  - 한국어 안내:
+      - 시작: ko/index.md
+      - 설치 · 빠른 시작: ko/quickstart.md
+      - API 사용법: ko/api.md
+      - 제한 사항: ko/limitations.md
+      - 문서 생성: ko/guide/document.md
+      - 표: ko/guide/tables.md
+      - 이미지와 구역: ko/guide/pictures-sections.md
+      - 검색·치환: ko/guide/search-replace.md
+      - 템플릿: ko/guide/templates.md
+      - 변경 추적: ko/guide/compare.md
+      - API 레퍼런스: ko/reference.md
+      - 결과와 예외: ko/errors.md

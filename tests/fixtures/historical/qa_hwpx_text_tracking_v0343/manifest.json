@@ -1,0 +1,27 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.34.3",
+  "scenario_id": "hwpx-text-tracking-control",
+  "status": "supported-positive-control",
+  "format": "hwpx",
+  "purpose": "OLD/NEW/TRACKED are the same text-change scenario and prove HWPX text Track Changes remains enabled.",
+  "old": {
+    "file": "text_old_v0343.hwpx",
+    "sha256": "3838f8b0651646fcdd5d598ed71da3efce2b12cf1f374387d816a35c43ec51c3",
+    "plain_text": "Text tracking: old value"
+  },
+  "new": {
+    "file": "text_new_v0343.hwpx",
+    "sha256": "67dc89817ba6e075408a62c81a23db57815c71985010005dd04162ebf407afdf",
+    "plain_text": "Text tracking: new value"
+  },
+  "tracked": {
+    "file": "text_tracked_review_v0343.hwpx",
+    "sha256": "d18cb1adacdd8d12e2d1b8c275bb4f46569160e51c8d325a87b04ab9eea06699",
+    "logical_text_projection": "Text tracking: oldnew value",
+    "author": "PyWPDoc QA",
+    "date": "2026-10-10T00:00:00Z"
+  },
+  "expected_accept_all_plain_text": "Text tracking: new value",
+  "expected_reject_all_plain_text": "Text tracking: old value"
+}

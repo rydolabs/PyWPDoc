@@ -1,0 +1,19 @@
+{
+  "schema": "pywpdoc-release-qa-index/v1",
+  "release": "0.34.3",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-formatting-unsupported",
+      "directory": "qa_hwpx_format_unsupported_v0343",
+      "status": "expected-fail-closed",
+      "tracked_file_expected": false
+    },
+    {
+      "scenario_id": "hwpx-text-tracking-control",
+      "directory": "qa_hwpx_text_tracking_v0343",
+      "status": "supported-positive-control",
+      "tracked_file_expected": true
+    }
+  ],
+  "rule": "Never present artifacts from different scenario_id values as one OLD/NEW/TRACKED set."
+}

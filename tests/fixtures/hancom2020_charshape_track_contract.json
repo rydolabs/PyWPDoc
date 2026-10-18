@@ -1,0 +1,20 @@
+{
+  "source_sha256": "3977565ba3377155c82170e2524ed06d6d0dc4e3b7cd0430d499ffa4d5477e5b",
+  "source_description": "Hancom 2020-authored HWPX from project formatting QA, Track Changes enabled; Alpha Beta changed 10pt regular -> 16pt bold.",
+  "track_change": {
+    "type": "CharShape",
+    "date": "2026-10-12T11:26:00Z",
+    "authorID": "1",
+    "hide": "0",
+    "id": "1",
+    "charshapeID": "0"
+  },
+  "author": {"name": "user", "mark": "1", "id": "1"},
+  "track_config_flags": "57",
+  "target_text": "Alpha Beta",
+  "old_charpr": {"id": "0", "height": "1000", "bold": false},
+  "new_charpr": {"height": "1600", "bold": true},
+  "native_anchor_attribute": "paraTcId",
+  "schema_anchor_attribute_not_used_by_hancom2020": "charTcId",
+  "native_old_shape_attribute": "charshapeID"
+}

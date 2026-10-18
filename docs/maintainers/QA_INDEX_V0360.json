@@ -1,0 +1,10 @@
+{
+  "release": "0.36.0-candidate",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-parashape-formatting-v0360",
+      "directory": "qa_hwpx_parashape_v0360",
+      "status": "external-hancom-2020-gui-gate-pending"
+    }
+  ]
+}

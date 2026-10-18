@@ -1,0 +1,16 @@
+{
+  "schema": "pywpdoc-release-qa-index/v1",
+  "release": "0.34.4",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-char-format-tracking-hancom2020",
+      "directory": "qa_hwpx_char_format_v0344",
+      "tracked_file_expected": true
+    },
+    {
+      "scenario_id": "hwpx-text-tracking-control",
+      "directory": "qa_hwpx_text_tracking_v0344",
+      "tracked_file_expected": true
+    }
+  ]
+}

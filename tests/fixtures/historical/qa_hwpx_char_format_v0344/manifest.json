@@ -1,0 +1,31 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.34.4",
+  "scenario_id": "hwpx-char-format-tracking-hancom2020",
+  "status": "native-oracle-backed-candidate",
+  "format": "hwpx",
+  "purpose": "Formatting-only Track Changes: font, bold, and size changes with identical text.",
+  "native_oracle_contract": "tests/fixtures/hancom2020_charshape_track_contract.json",
+  "old": {
+    "file": "char_format_old_v0344.hwpx",
+    "sha256": "c3440b5b7c6d36100ccd6fdef946ad955fccf11fc71ab757c59447d21b75ad49"
+  },
+  "new": {
+    "file": "char_format_new_v0344.hwpx",
+    "sha256": "04c38bfeaab841ab2225bdeb86fbf353bfacd9926a84a740b0de35092c5d6bf9"
+  },
+  "tracked": {
+    "file": "char_format_tracked_review_v0344.hwpx",
+    "sha256": "9a1506120c8dce8c0117a1f97877d810678a7add8159b47db31972d15bc71f15",
+    "charshape_change_count": 3,
+    "run_paraTcId_count": 3,
+    "run_charTcId_count": 0,
+    "text_revision_marker_count": 0,
+    "author": "user",
+    "date": "2026-10-12T11:26:00Z"
+  },
+  "expected_accept_all": "NEW formatting",
+  "expected_reject_all": "OLD formatting",
+  "gui_verification_required": true,
+  "paragraph_format_tracking": "unsupported-until-native-ParaShape-oracle"
+}

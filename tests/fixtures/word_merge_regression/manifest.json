@@ -1,0 +1,38 @@
+{
+  "01_contract": {
+    "source": {
+      "file": "01_contract_source.docx",
+      "sha256": "e265978230125aa696f83acda4174f9aec58d72d26dcd5fe998ce015dd4bdaf7",
+      "bytes": 37327
+    },
+    "word_saved": {
+      "file": "01_contract_word_saved.docx",
+      "sha256": "3e5b5568f5e0399dabda8c3fc95d5adde102cb50d11a9e5b1548d74a1e874011",
+      "bytes": 27529
+    }
+  },
+  "11_purchase_order": {
+    "source": {
+      "file": "11_purchase_order_source.docx",
+      "sha256": "8b3882d1f00ad366a84c87c66bcf0036b27a491d654ff3b71a4f3a2394365948",
+      "bytes": 37318
+    },
+    "word_saved": {
+      "file": "11_purchase_order_word_saved.docx",
+      "sha256": "4e50f8209bc789bca15ccf8ac8287b44353a9418c9a6fe9e89b6e3e29469048e",
+      "bytes": 27486
+    }
+  },
+  "23_complex_tables": {
+    "source": {
+      "file": "23_complex_tables_source.docx",
+      "sha256": "3f2d72acaf0e201c83843f64f71326014133293cde824b30118be3c934696227",
+      "bytes": 37542
+    },
+    "word_saved": {
+      "file": "23_complex_tables_word_saved.docx",
+      "sha256": "1b09415c46cc4b0a271591bc941f76c1ebfe29b9414c42a8430c591ea46a677e",
+      "bytes": 27737
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.34.3",
+  "scenario_id": "hwpx-formatting-unsupported",
+  "status": "expected-fail-closed",
+  "format": "hwpx",
+  "purpose": "HWPX character-format difference must not emit a misleading Track Changes document.",
+  "old": {
+    "file": "format_old_v0343.hwpx",
+    "sha256": "6cf62633352fb689e7b1da03fd09b8a32d0910c652c8d97ce54c166bca84cad6",
+    "plain_text": "Character formatting: Alpha Beta",
+    "changed_span": "Alpha Beta",
+    "font_size_pt": 10,
+    "bold": false
+  },
+  "new": {
+    "file": "format_new_v0343.hwpx",
+    "sha256": "c051aedef6888eb3e921912a8ed6955fcb97f2b4b33afa58fd714095850a8db9",
+    "plain_text": "Character formatting: Alpha Beta",
+    "changed_span": "Alpha Beta",
+    "font_size_pt": 14,
+    "bold": true
+  },
+  "tracked": null,
+  "expected_error_code": "compare-hwpx-format-track-unsupported",
+  "native_hancom_fixture_required_before_support": true
+}

@@ -1,0 +1,3 @@
+This scenario intentionally has no TRACKED HWPX.
+Expected error: compare-hwpx-format-track-unsupported
+A native Hancom-authored formatting-revision HWPX is required before this feature can be enabled.

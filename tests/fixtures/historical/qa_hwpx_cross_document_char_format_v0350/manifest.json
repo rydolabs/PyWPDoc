@@ -1,0 +1,27 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.35.0",
+  "scenario_id": "hwpx-cross-document-char-format-resource-import",
+  "status": "supported-gui-verification-required",
+  "format": "hwpx",
+  "purpose": "OLD-only font resources are imported/remapped into the NEW-derived review package.",
+  "old_font": "PyWPDoc Legacy QA Font",
+  "new_font": "PyWPDoc Modern QA Font",
+  "old": {
+    "file": "crossdoc_old_v0350.hwpx",
+    "sha256": "3c65a415a986063ccc32e361e1fdfa64c0d15fd2ec916bb7a66393297e631215"
+  },
+  "new": {
+    "file": "crossdoc_new_v0350.hwpx",
+    "sha256": "0fa9f941e95192e295b5b5d74f2b238df341b188f783ec468f229287a21d9569"
+  },
+  "tracked": {
+    "file": "crossdoc_tracked_review_v0350.hwpx",
+    "sha256": "7f584f21b40c38a3b1486aeda8bb701a6a0305dca7d6e708e414938dfc8d8bfc",
+    "charshapeID": "10",
+    "paraTcId": "1"
+  },
+  "expected_accept_all": "NEW: modern font, 16pt, bold",
+  "expected_reject_all": "OLD: legacy font, 10pt, normal",
+  "gui_verification_required": true
+}

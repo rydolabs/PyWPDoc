@@ -1,0 +1,3 @@
+Expected fail-closed boundary
+code=compare-hwpx-table-row-track-unsupported
+message=HWPX exposes tracked text ranges but no verified row-level revision encoding

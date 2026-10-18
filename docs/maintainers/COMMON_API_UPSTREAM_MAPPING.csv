@@ -1,0 +1,10 @@
+upstream_module,upstream_behavior,common_api_layer,implemented_example,notes
+"tests/test_api.py","open document / invalid input","L1 document; L5 negative","test_open_unknown_format_fails_closed","DOCX/HWPX format autodetection differs from python-docx"
+"tests/test_document.py","add_paragraph / save / tables / core_properties","L1 document","test_document_paragraph_roundtrip","Dual format matrix"
+"tests/text/test_paragraph.py","text setter / clear / insert before / runs","L1 paragraph","test_paragraph_clear_then_add_run","Only public intersection"
+"tests/text/test_run.py","run text / bold / italic","L1 paragraph","test_run_bold_italic_persist","Run properties that are not common require format-specific tests"
+"tests/test_table.py","table cells / add row / merge / nested tables","L1 table","test_table_grid_persists","Dual format matrix"
+"tests/test_section.py","headers / footers / sections / orientation","L6 format-specific","PLANNED","Needs careful common API contract inspection"
+"tests/image/test_image.py","image stream / scaling / invalid image","L2 package; L6 internals","PLANNED","Requires format-specific image metadata and visual oracle"
+"tests/opc/test_package.py","part links / relationships / package IO","L2 ZIP/XML; L6 internals","test_saved_archive_xml_is_parseable","Relationship semantics differ DOCX vs HWPX"
+"features/**/*.feature","end-user BDD scenarios","L8 user workflows","PLANNED","Source-derived categories only; not claiming tests ported"

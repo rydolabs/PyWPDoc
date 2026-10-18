@@ -1,0 +1,9 @@
+include README.md README.ko.md LICENSE pyproject.toml CHANGELOG.md
+recursive-include src/pywpdoc/_engine/data *.hwpx
+include src/pywpdoc/_engine/py.typed
+prune tests
+prune docs
+prune examples
+prune scripts
+recursive-exclude .github *
+global-exclude __pycache__ *.py[cod] *.log

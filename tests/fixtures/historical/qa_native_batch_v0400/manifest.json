@@ -1,0 +1,63 @@
+{
+  "schema": "native-batch-qa/v1",
+  "project_version": "0.40.0",
+  "baseline": "01_BATCH_BASE.hwpx",
+  "baseline_sha256": "9d36d54c54feb1e897f6ea7d3ac95eb98d0ff997807312e9bab375a604816ff5",
+  "native_review_input": "02_BATCH_TRACKED.hwpx",
+  "rules": {
+    "safety": "no structural writer is enabled from these findings",
+    "skip": "unperformed cases are reported, not discarded"
+  },
+  "cases": [
+    {
+      "id": "T01_INSERT",
+      "kind": "text_insert",
+      "instruction": "본문 2행 오른쪽 셀 ABC 끝에 D 추가 (ABCD)"
+    },
+    {
+      "id": "T02_DELETE",
+      "kind": "text_delete",
+      "instruction": "본문 2행 오른쪽 셀 ABCD에서 마지막 D만 삭제 (ABC)"
+    },
+    {
+      "id": "T03_REPLACE",
+      "kind": "text_replace",
+      "instruction": "본문 2행 오른쪽 셀 OLD를 NEW로 교체"
+    },
+    {
+      "id": "T04_CHAR",
+      "kind": "char_format",
+      "instruction": "본문 2행 오른쪽 셀 BOLDME 전체를 굵게(Ctrl+B)"
+    },
+    {
+      "id": "T05_PARA",
+      "kind": "para_format",
+      "instruction": "본문 2행 오른쪽 셀 ALIGNME 문단 가운데 정렬"
+    },
+    {
+      "id": "S06_ROW_INSERT",
+      "kind": "row_insert",
+      "instruction": "A/1 행과 B/2 행 사이에 1행 삽입, 새 행에 X/9 입력"
+    },
+    {
+      "id": "S07_ROW_DELETE",
+      "kind": "row_delete",
+      "instruction": "B/2 전체 행만 삭제 (표제 행은 유지)"
+    },
+    {
+      "id": "S08_COL_INSERT",
+      "kind": "col_insert",
+      "instruction": "표 맨 오른쪽에 1열 삽입 (기존 첫 열은 유지)"
+    },
+    {
+      "id": "S09_COL_DELETE",
+      "kind": "col_delete",
+      "instruction": "마지막(세 번째) 열 전체 삭제 (첫 열 표제 유지)"
+    },
+    {
+      "id": "S10_CELL_MERGE",
+      "kind": "cell_merge",
+      "instruction": "표 2행(본문 첫 행)의 오른쪽 두 셀 LEFT와 RIGHT를 병합"
+    }
+  ]
+}

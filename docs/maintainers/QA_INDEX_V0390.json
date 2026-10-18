@@ -1,0 +1,10 @@
+{
+  "release": "0.39.0-candidate",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-semantic-style-identity-v0390",
+      "directory": "qa_hwpx_style_identity_v0390",
+      "status": "automated-contract-passed"
+    }
+  ]
+}

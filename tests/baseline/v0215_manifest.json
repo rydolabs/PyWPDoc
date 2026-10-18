@@ -1,0 +1,30 @@
+{
+  "baseline": "v0.21.5",
+  "legacy_test_count": 224,
+  "source_fixture": "tests/fixtures/original_notice.hwpx",
+  "source_sha256": "e9f967468dfcfa72d1fad0a4b060793fbc2b8e1503fc655b21a2948702ef5634",
+  "hwpx_package_parts": {
+    "BinData/image1.png": "20217324ccb3b04e61df48a28b1381c45f18cfc881dc57d175979901576ad00e",
+    "Contents/content.hpf": "e376ca4f237b485b78c6098ad7e51d094d0b983b51ed561b6657557aae43cdb7",
+    "Contents/header.xml": "1e841fdb47a9261c1f13cfd5b6ab2ca9ca44d224a52373c0917061118532d61d",
+    "Contents/section0.xml": "967f879baec312ea03fefac73317c58b503fe3ff62b74ccfa5abd0fc888e8275",
+    "META-INF/container.rdf": "0cfd814c20595c841e48e62fbf7591829f13c177fa92af634c8199f85ecf3a89",
+    "META-INF/container.xml": "5109d3a9249ec1058177fedab574c5d9616058aa92ebefcd33249ebb36a20f61",
+    "META-INF/manifest.xml": "2b4b155c1bb6a9ccc212fef113c4831d2f558e67cf1260eb314ce54f26fd32ea",
+    "Preview/PrvImage.png": "6adb7c11f6500172b10b4796b8fc22636170266e194d737cf14bb66a008e3556",
+    "Preview/PrvText.txt": "d986204b9f9392139b181e2ede09a2b3a3c7a13119e2b98172020f27b340584c",
+    "mimetype": "5ab5230b5af04f78947736bf8dd1a269aa684e234f7f4a392efb85289d1655c2",
+    "settings.xml": "c317fe6964cc4d7295ab931937f433a01b54a99264bdb1b9a4a2f1138bfea69a",
+    "version.xml": "cb5519394c57a778f44a7377193e6c9ec850521fbe7d6424419cc24517278cc5"
+  },
+  "docx_selected_parts": {
+    "word/_rels/document.xml.rels": "dc5eaed833ad9f3e84a8a809036e4d4cd217373c559111f2460655c102596c4d",
+    "word/document.xml": "7eaf7e73e3ecee7b539fdba3560218a01f92dff996c5d79531bab004a6008075",
+    "word/fontTable.xml": "79385fb7f60247507ecaffc292e9ebd52ea0657b8634f629ba6fccc54011d6bb",
+    "word/settings.xml": "51a0d348fe85965c66e4748a03c3c0d055d78455514f03cb121c334af7d73689",
+    "word/styles.xml": "02d71a68ddb92c055e84526d6a9e45700be3872781ababf759241694bc30e384"
+  },
+  "known_issues": [
+    "HWPX->DOCX font visual parity remains open/deferred"
+  ]
+}

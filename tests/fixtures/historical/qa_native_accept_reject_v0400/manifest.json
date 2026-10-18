@@ -1,0 +1,16 @@
+{
+  "version": "v0.40.0 acceptance/rejection QA kit v2",
+  "created_on": "2026-10-13",
+  "native_windows_status": "V1_FAILED_EARLY_ON_FALSE_RETURN__V2_NOT_RUN_ON_HWP_2020",
+  "offline_unit_tests": "13/13 passed",
+  "existing_project_tests": "514/514 passed",
+  "source_file_sha256": "12d90536d2327ba4c2ddf054a73b38c0e6edf6a6b4ad1d0a6fb56a659277bd83",
+  "baseline_file_sha256": "9d36d54c54feb1e897f6ea7d3ac95eb98d0ff997807312e9bab375a604816ff5",
+  "auto_action_names": [
+    "TrackChangeApplyAll",
+    "TrackChangeCancelAll"
+  ],
+  "source_code_unchanged_except_qa_and_documentation": true,
+  "v1_observation": "Both HAction.Run calls returned False; v1 aborted before saving output files",
+  "v2_change": "save and inspect HWPX even when HAction.Run returns False"
+}

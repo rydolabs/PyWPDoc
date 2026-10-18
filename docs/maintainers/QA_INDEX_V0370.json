@@ -1,0 +1,10 @@
+{
+  "release": "0.37.0-candidate",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-cross-document-parashape-v0370",
+      "directory": "qa_hwpx_cross_document_parashape_v0370",
+      "status": "external-hancom-2020-gui-gate-pending"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.34.4",
+  "scenario_id": "hwpx-text-tracking-control",
+  "status": "supported-positive-control",
+  "format": "hwpx",
+  "old": {
+    "file": "text_old_v0344.hwpx",
+    "sha256": "7d23d7f8595df57bcdb825bd13eaea116acf5a26ae63d62493ccb47d7eeeff5a"
+  },
+  "new": {
+    "file": "text_new_v0344.hwpx",
+    "sha256": "30bc4cb52e527cdd0fc777ff9f836e00a174a97c8bab7e0c1b84d3505375ac3b"
+  },
+  "tracked": {
+    "file": "text_tracked_review_v0344.hwpx",
+    "sha256": "b494f70f186ff18276593b4d6b9a3c4c2b38daf144a1b9fa86360eff09537869"
+  }
+}

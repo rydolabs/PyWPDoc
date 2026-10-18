@@ -1,0 +1,40 @@
+{
+  "scenario_id": "hwpx-cross-document-image-bullet-v0380",
+  "release": "0.38.0-candidate",
+  "status": "external-hancom-2020-gui-gate-pending",
+  "basis": [
+    "v0.36.0 ParaShape wire mechanism verified in Hancom 2020",
+    "v0.37.0 text-bullet/numbering cross-document change bars match Hancom 2020 native behavior, including blank description text for indirect list-resource changes",
+    "v0.38.0 imports/deduplicates image-bullet OPF manifest and BinData payloads"
+  ],
+  "old": {
+    "file": "image_bullet_old_v0380.hwpx",
+    "sha256": "541d19809ac013386224537c44e2d3300050381a021b2c9621b34efe221201d0"
+  },
+  "new": {
+    "file": "image_bullet_new_v0380.hwpx",
+    "sha256": "e8d144059b0ab5834971e67ea8e06454e6aacfca3b38a55257b5e79617b033f5"
+  },
+  "tracked": {
+    "file": "image_bullet_tracked_review_v0380.hwpx",
+    "sha256": "058b9f8b80913e5c87a4b66b6608f3f03b01f77020ee5583e82d7ef4f5630fac"
+  },
+  "expected": {
+    "track_change_type": "ParaShape",
+    "body_anchor": "hp:p@paraTcId",
+    "old_shape_attribute": "parashapeID",
+    "count": 1,
+    "old_bullet_id": "2",
+    "new_bullet_id": "1",
+    "old_binary_item_id": "image2",
+    "new_binary_item_id": "image1",
+    "old_binary_href": "BinData/image2.png",
+    "new_binary_href": "BinData/image1.png",
+    "text_insert_delete_markers": 0
+  },
+  "case": {
+    "text": "Image bullet resource: Sample Text",
+    "old_image": "black diamond",
+    "new_image": "black circle"
+  }
+}

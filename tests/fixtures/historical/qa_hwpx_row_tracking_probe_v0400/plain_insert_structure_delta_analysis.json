@@ -1,0 +1,762 @@
+{
+  "baseline": {
+    "path": "/mnt/data/pywpdoc_v0400_work/qa_hwpx_row_tracking_probe_v0400/row_insert_probe_base_v0400.hwpx",
+    "entries": [
+      "mimetype",
+      "version.xml",
+      "Contents/header.xml",
+      "Contents/section0.xml",
+      "Preview/PrvText.txt",
+      "settings.xml",
+      "Preview/PrvImage.png",
+      "META-INF/container.rdf",
+      "Contents/content.hpf",
+      "META-INF/container.xml",
+      "META-INF/manifest.xml"
+    ],
+    "version": {
+      "tagetApplication": "WORDPROCESSOR",
+      "major": "5",
+      "minor": "1",
+      "micro": "0",
+      "buildNumber": "1",
+      "os": "1",
+      "xmlVersion": "1.2",
+      "application": "Hancom Office Hangul",
+      "appVersion": "11, 0, 0, 2129 WIN32LEWindows_8"
+    },
+    "track_changes": [],
+    "track_change_authors": [],
+    "track_change_config": {
+      "flags": "56"
+    },
+    "inline_markers": [],
+    "paragraph_or_run_revision_anchors": [],
+    "row_revision_anchor_candidates": [],
+    "history_parts": [],
+    "sections": [
+      {
+        "name": "Contents/section0.xml",
+        "tables": [
+          {
+            "table_index": 0,
+            "attrs": {
+              "id": "910019666",
+              "zOrder": "0",
+              "numberingType": "TABLE",
+              "textWrap": "TOP_AND_BOTTOM",
+              "textFlow": "BOTH_SIDES",
+              "lock": "0",
+              "dropcapstyle": "None",
+              "pageBreak": "CELL",
+              "repeatHeader": "0",
+              "rowCnt": "3",
+              "colCnt": "2",
+              "cellSpacing": "0",
+              "borderFillIDRef": "3",
+              "noAdjust": "0"
+            },
+            "declared_row_count": "3",
+            "declared_col_count": "2",
+            "actual_row_count": 3,
+            "rows": [
+              {
+                "row_index": 0,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "A",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "1",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "B",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "2",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "C",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "3",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tracked": {
+    "path": "/mnt/data/pywpdoc_v0400_work/qa_hwpx_row_tracking_probe_v0400/row_insert_expected_final_v0400.hwpx",
+    "entries": [
+      "mimetype",
+      "version.xml",
+      "Contents/header.xml",
+      "Contents/section0.xml",
+      "Preview/PrvText.txt",
+      "settings.xml",
+      "Preview/PrvImage.png",
+      "META-INF/container.rdf",
+      "Contents/content.hpf",
+      "META-INF/container.xml",
+      "META-INF/manifest.xml"
+    ],
+    "version": {
+      "tagetApplication": "WORDPROCESSOR",
+      "major": "5",
+      "minor": "1",
+      "micro": "0",
+      "buildNumber": "1",
+      "os": "1",
+      "xmlVersion": "1.2",
+      "application": "Hancom Office Hangul",
+      "appVersion": "11, 0, 0, 2129 WIN32LEWindows_8"
+    },
+    "track_changes": [],
+    "track_change_authors": [],
+    "track_change_config": {
+      "flags": "56"
+    },
+    "inline_markers": [],
+    "paragraph_or_run_revision_anchors": [],
+    "row_revision_anchor_candidates": [],
+    "history_parts": [],
+    "sections": [
+      {
+        "name": "Contents/section0.xml",
+        "tables": [
+          {
+            "table_index": 0,
+            "attrs": {
+              "id": "622949177",
+              "zOrder": "0",
+              "numberingType": "TABLE",
+              "textWrap": "TOP_AND_BOTTOM",
+              "textFlow": "BOTH_SIDES",
+              "lock": "0",
+              "dropcapstyle": "None",
+              "pageBreak": "CELL",
+              "repeatHeader": "0",
+              "rowCnt": "4",
+              "colCnt": "2",
+              "cellSpacing": "0",
+              "borderFillIDRef": "3",
+              "noAdjust": "0"
+            },
+            "declared_row_count": "4",
+            "declared_col_count": "2",
+            "actual_row_count": 4,
+            "rows": [
+              {
+                "row_index": 0,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "A",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "1",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "X",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "9",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "B",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "2",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 3,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "C",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "3"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "3",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "3"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "delta": {
+    "entries_added": [],
+    "entries_removed": [],
+    "baseline_row_matrices": [
+      [
+        [
+          "A",
+          "1"
+        ],
+        [
+          "B",
+          "2"
+        ],
+        [
+          "C",
+          "3"
+        ]
+      ]
+    ],
+    "tracked_row_matrices": [
+      [
+        [
+          "A",
+          "1"
+        ],
+        [
+          "X",
+          "9"
+        ],
+        [
+          "B",
+          "2"
+        ],
+        [
+          "C",
+          "3"
+        ]
+      ]
+    ],
+    "structure_changed": true,
+    "tracked_matches_expected_final_structure": true
+  },
+  "expected_final": {
+    "path": "/mnt/data/pywpdoc_v0400_work/qa_hwpx_row_tracking_probe_v0400/row_insert_expected_final_v0400.hwpx",
+    "entries": [
+      "mimetype",
+      "version.xml",
+      "Contents/header.xml",
+      "Contents/section0.xml",
+      "Preview/PrvText.txt",
+      "settings.xml",
+      "Preview/PrvImage.png",
+      "META-INF/container.rdf",
+      "Contents/content.hpf",
+      "META-INF/container.xml",
+      "META-INF/manifest.xml"
+    ],
+    "version": {
+      "tagetApplication": "WORDPROCESSOR",
+      "major": "5",
+      "minor": "1",
+      "micro": "0",
+      "buildNumber": "1",
+      "os": "1",
+      "xmlVersion": "1.2",
+      "application": "Hancom Office Hangul",
+      "appVersion": "11, 0, 0, 2129 WIN32LEWindows_8"
+    },
+    "track_changes": [],
+    "track_change_authors": [],
+    "track_change_config": {
+      "flags": "56"
+    },
+    "inline_markers": [],
+    "paragraph_or_run_revision_anchors": [],
+    "row_revision_anchor_candidates": [],
+    "history_parts": [],
+    "sections": [
+      {
+        "name": "Contents/section0.xml",
+        "tables": [
+          {
+            "table_index": 0,
+            "attrs": {
+              "id": "622949177",
+              "zOrder": "0",
+              "numberingType": "TABLE",
+              "textWrap": "TOP_AND_BOTTOM",
+              "textFlow": "BOTH_SIDES",
+              "lock": "0",
+              "dropcapstyle": "None",
+              "pageBreak": "CELL",
+              "repeatHeader": "0",
+              "rowCnt": "4",
+              "colCnt": "2",
+              "cellSpacing": "0",
+              "borderFillIDRef": "3",
+              "noAdjust": "0"
+            },
+            "declared_row_count": "4",
+            "declared_col_count": "2",
+            "actual_row_count": 4,
+            "rows": [
+              {
+                "row_index": 0,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "A",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "1",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "0"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 1,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "X",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "9",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "1"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 2,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "B",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "2",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "2"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "row_index": 3,
+                "attrs": {},
+                "cells": [
+                  {
+                    "text": "C",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "0",
+                      "rowAddr": "3"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  },
+                  {
+                    "text": "3",
+                    "attrs": {
+                      "name": "",
+                      "header": "0",
+                      "hasMargin": "0",
+                      "protect": "0",
+                      "editable": "0",
+                      "dirty": "0",
+                      "borderFillIDRef": "3"
+                    },
+                    "cellAddr": {
+                      "colAddr": "1",
+                      "rowAddr": "3"
+                    },
+                    "cellSpan": {
+                      "colSpan": "1",
+                      "rowSpan": "1"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "classification": {
+    "track_change_types": [],
+    "inline_text_tracking_detected": false,
+    "inline_marker_parents": [],
+    "markers_inside_table_cells": 0,
+    "paragraph_or_run_revision_anchors_detected": false,
+    "row_specific_revision_anchor_detected": false,
+    "history_parts_detected": false,
+    "safe_to_synthesize_row_tracking_from_public_model": false,
+    "reason": "Hancom's public OWPML model exposes Insert/Delete markers as hp:t mixed-content and verified format anchors on paragraph/run; no hp:tr-specific Track Changes anchor is established by this analyzer. A Hancom-authored row-change sample is required before synthesis."
+  }
+}

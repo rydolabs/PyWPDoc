@@ -1,0 +1,105 @@
+# Prepared for rydolabs/PyWPDoc. This file does NOT trigger uploads until
+# explicitly installed on GitHub and manually dispatched after a Release exists.
+name: Publish PyWPDoc to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Approved, published GitHub Release tag (example: v0.44.0)'
+        required: true
+        type: string
+
+permissions: {}
+concurrency:
+  group: publish-pypi-${{ inputs.release_tag }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Verify release and build distributions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+          persist-credentials: false
+      - name: Verify approved tag, published GitHub Release, and successful CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(rc[0-9]+)?$ ]]; then
+            echo 'Expected vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCHrcN' >&2
+            exit 1
+          fi
+          git tag --points-at HEAD | grep -Fxq "$RELEASE_TAG" || {
+            echo "Checkout does not point at exact tag: $RELEASE_TAG" >&2; exit 1;
+          }
+          is_draft="$(gh api "repos/$REPO/releases/tags/$RELEASE_TAG" --jq '.draft')"
+          if [[ "$is_draft" != false ]]; then
+            echo 'GitHub Release must be published (not draft).' >&2
+            exit 1
+          fi
+          sha="$(git rev-parse HEAD)"
+          count="$(gh api "repos/$REPO/actions/runs?head_sha=$sha&per_page=100" \
+            --jq '[.workflow_runs[] | select(.name == "PyWPDoc CI" and .conclusion == "success")] | length')"
+          if [[ "$count" -lt 1 ]]; then
+            echo "No successful 'PyWPDoc CI' workflow run found for $sha" >&2
+            exit 1
+          fi
+          echo "Validated release $RELEASE_TAG on $sha and successful CI."
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify source version matches tag
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import tomllib
+          project = tomllib.loads(pathlib.Path('pyproject.toml').read_text(encoding='utf-8'))['project']
+          assert project['name'].lower().replace('_','-') == 'pywpdoc', 'Unexpected PyPI project'
+          tag_version = os.environ['RELEASE_TAG'][1:]
+          assert project['version'] == tag_version, (project['version'], tag_version)
+          print('Verified pyproject.toml version:', tag_version)
+          PY
+      - name: Build and check release artifacts
+        run: |
+          python -m pip install --upgrade build twine
+          python -m build
+          python -m twine check dist/*
+          ls -lh dist/
+      - name: Upload package artifacts for isolated publish job
+        uses: actions/upload-artifact@v4
+        with:
+          name: pypi-dists
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish to PyPI (manual environment approval)
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/pywpdoc/
+    permissions:
+      id-token: write
+    steps:
+      - name: Download distributions produced by validated build
+        uses: actions/download-artifact@v4
+        with:
+          name: pypi-dists
+          path: dist/
+      - name: Publish via PyPI Trusted Publishing (OIDC)
+        uses: pypa/gh-action-pypi-publish@release/v1

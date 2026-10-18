@@ -1,0 +1,10 @@
+{
+  "release": "0.40.0-candidate",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-native-table-row-tracking-probe",
+      "directory": "qa_hwpx_row_tracking_probe_v0400",
+      "status": "native-oracle-required-fail-closed"
+    }
+  ]
+}

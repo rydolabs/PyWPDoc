@@ -1,0 +1,73 @@
+{
+  "scenario_id": "hwpx-parashape-formatting-v0360",
+  "release": "0.36.0-candidate",
+  "status": "external-hancom-2020-gui-gate-pending",
+  "basis": [
+    "Hancom public OWPML CPType writes hp:p@paraTcId",
+    "Hancom public OWPML TrackChange writes type=ParaShape with parashapeID"
+  ],
+  "old": {
+    "file": "parashape_old_v0360.hwpx",
+    "sha256": "9a2d07331f546da2418c55ce09ecec543490c25d668d795cfcdfc420266d0ba0"
+  },
+  "new": {
+    "file": "parashape_new_v0360.hwpx",
+    "sha256": "abbf0b9d5783558b54627c4c7440761845a84820a9ae6da183c304c0e8ff22e4"
+  },
+  "tracked": {
+    "file": "parashape_tracked_review_v0360.hwpx",
+    "sha256": "e06c7282d369b88cef460836d93431b14c5bd11629a45889daadb8c5bc673d55"
+  },
+  "expected": {
+    "track_change_type": "ParaShape",
+    "body_anchor": "hp:p@paraTcId",
+    "old_shape_attribute": "parashapeID",
+    "count": 3,
+    "text_insert_delete_markers": 0,
+    "run_format_anchors": 0
+  },
+  "cases": [
+    {
+      "text": "Alignment: Alpha Beta",
+      "change_id": "1",
+      "old_paraPr": "0",
+      "new_paraPr": "21",
+      "old": {
+        "alignment": "JUSTIFY",
+        "line_spacing_percent": 160
+      },
+      "new": {
+        "alignment": "CENTER",
+        "line_spacing_percent": 160
+      }
+    },
+    {
+      "text": "Line spacing: Gamma Delta",
+      "change_id": "2",
+      "old_paraPr": "0",
+      "new_paraPr": "22",
+      "old": {
+        "alignment": "JUSTIFY",
+        "line_spacing_percent": 160
+      },
+      "new": {
+        "alignment": "JUSTIFY",
+        "line_spacing_percent": 190
+      }
+    },
+    {
+      "text": "Combined paragraph formatting: Sample Text",
+      "change_id": "3",
+      "old_paraPr": "0",
+      "new_paraPr": "24",
+      "old": {
+        "alignment": "JUSTIFY",
+        "line_spacing_percent": 160
+      },
+      "new": {
+        "alignment": "RIGHT",
+        "line_spacing_percent": 180
+      }
+    }
+  ]
+}

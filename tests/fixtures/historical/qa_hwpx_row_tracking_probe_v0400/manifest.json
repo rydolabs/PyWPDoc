@@ -1,0 +1,44 @@
+{
+  "schema": "pywpdoc-release-qa/v1",
+  "release": "0.40.0-candidate",
+  "scenario_id": "hwpx-native-table-row-tracking-probe",
+  "status": "native-oracle-required-fail-closed",
+  "public_model_evidence": {
+    "track_change_types": [
+      "Insert",
+      "Delete",
+      "CharShape",
+      "ParaShape"
+    ],
+    "insert_delete_marker_scope": "hp:t mixed content in Hancom public OWPML model",
+    "verified_hp_tr_revision_anchor": false
+  },
+  "compare_error_code": "compare-hwpx-table-row-track-unsupported",
+  "insert": {
+    "baseline": {
+      "file": "row_insert_probe_base_v0400.hwpx",
+      "sha256": "202369613785a6af7587d684296611c9721417d24b750e19084f80013085084a"
+    },
+    "expected_final": {
+      "file": "row_insert_expected_final_v0400.hwpx",
+      "sha256": "1ce9a396f8c3d772ed1fcc5a1f389be60868f82307d47ef64961d582e2ae01bd"
+    },
+    "native_tracked": null,
+    "operation": "insert row X/9 between A/1 and B/2 while Track Changes is ON"
+  },
+  "delete": {
+    "baseline": {
+      "file": "row_delete_probe_base_v0400.hwpx",
+      "sha256": "e88d6ca002b54c2f13d33c94069162cf8a3a2b18e6972ba05a9201b3e47cb3e3"
+    },
+    "expected_final": {
+      "file": "row_delete_expected_final_v0400.hwpx",
+      "sha256": "5a50b790d9f8a4221e628e43bc6478fcec6d2c4420d9f3e47f099772928f54bf"
+    },
+    "native_tracked": null,
+    "operation": "delete entire B/2 row while Track Changes is ON",
+    "compare_error_code": "compare-hwpx-table-row-track-unsupported"
+  },
+  "analyzer": "quality/analyze_hwpx_row_tracking.py",
+  "rule": "Do not enable HWPX row-level Track Changes until a Hancom-authored unaccepted row-change HWPX establishes an Accept/Reject representation."
+}

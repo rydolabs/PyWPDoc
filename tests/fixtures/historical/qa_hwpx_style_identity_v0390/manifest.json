@@ -1,0 +1,44 @@
+{
+  "scenario_id": "hwpx-semantic-style-identity-v0390",
+  "release": "0.39.0-candidate",
+  "status": "automated-contract-passed",
+  "basis": [
+    "HWPX style ids are header-local and can differ across unrelated documents",
+    "named-style identity changes remain fail-closed because verified TrackChange records restore CharShape/ParaShape, not style identity",
+    "v0.39.0 compares resolved named-style identity before deciding whether ParaShape tracking is safe"
+  ],
+  "old": {
+    "file": "style_identity_old_v0390.hwpx",
+    "sha256": "584243b677ea92cb3c94148366ad321c42bd6a2c43d506d7b1e1032d6f27ed86",
+    "body_style_id": "1",
+    "line_spacing_percent": 177
+  },
+  "new": {
+    "file": "style_identity_new_v0390.hwpx",
+    "sha256": "f674bb5fcba17bb33a6a3030ffa640081d680ee7626b234390020c3dfe3473f5",
+    "body_style_id": "22",
+    "line_spacing_percent": 190
+  },
+  "tracked": {
+    "file": "style_identity_tracked_review_v0390.hwpx",
+    "sha256": "a125cad08f2ccd4597fbc558509b8bdac50fe93eda15ec5e4f39a84bb2aa31a3",
+    "body_style_id": "22"
+  },
+  "expected": {
+    "track_change_type": "ParaShape",
+    "count": 1,
+    "body_anchor": "hp:p@paraTcId",
+    "old_shape_attribute": "parashapeID",
+    "old_line_spacing_percent": 177,
+    "new_line_spacing_percent": 190,
+    "current_style_name": "본문",
+    "current_style_eng_name": "Body",
+    "old_local_style_id": "1",
+    "new_local_style_id": "22",
+    "text_insert_delete_markers": 0
+  },
+  "case": {
+    "text": "Style-local-ID semantic identity: Sample Text",
+    "purpose": "same semantic Body style, different local style ids, plus ParaShape line-spacing change"
+  }
+}

@@ -1,0 +1,16 @@
+HWPX table-row Track Changes native probe (Hancom 2020)
+
+INSERT probe
+1. Open row_insert_probe_base_v0400.hwpx in Hancom 2020.
+2. Turn Review > Track Changes ON.
+3. Insert one row between A/1 and B/2.
+4. Enter X in the left cell and 9 in the right cell.
+5. Do NOT accept/reject changes. Save as HWPX.
+
+DELETE probe
+1. Open row_delete_probe_base_v0400.hwpx in Hancom 2020.
+2. Turn Review > Track Changes ON.
+3. Delete the entire B/2 row.
+4. Do NOT accept/reject changes. Save as HWPX.
+
+Upload the saved HWPX file(s), not PDF. The analyzer will compare package entries, header trackChanges, inline markers, paragraph/run anchors, table row XML, and any history/version-log parts.

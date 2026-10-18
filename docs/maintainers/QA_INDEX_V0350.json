@@ -1,0 +1,11 @@
+{
+  "schema": "pywpdoc-release-qa-index/v1",
+  "release": "0.35.0",
+  "scenarios": [
+    {
+      "scenario_id": "hwpx-cross-document-char-format-resource-import",
+      "directory": "qa_hwpx_cross_document_char_format_v0350",
+      "tracked_file_expected": true
+    }
+  ]
+}
