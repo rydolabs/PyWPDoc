@@ -1,0 +1,4 @@
+# Keep Windows batch scripts executable when checked out on Linux CI runners.
+# Linux checkouts otherwise use LF and break the native launcher contract.
+*.bat text eol=crlf
+*.cmd text eol=crlf
