@@ -1,8 +1,12 @@
-# Publishing documentation requires a separate manual run.
+# Publish docs after successful main-branch CI, or by explicit manual dispatch.
 name: Publish API manual to GitHub Pages
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["PyWPDoc CI"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -15,6 +19,11 @@ concurrency:
 
 jobs:
   docs:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -22,6 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:
