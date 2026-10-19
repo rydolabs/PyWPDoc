@@ -98,6 +98,9 @@ Preview reports include structured match information. For bulk edits, verify the
 
 ## Real document previews
 
+**Want the actual Word template/Tracked Changes screenshots?** [Run the one-click Windows screenshot kit](https://github.com/rydolabs/PyWPDoc/blob/main/tests/showcase/README.md): download the repository, double-click `tests/showcase/RUN_SCREENSHOTS_WINDOWS.bat`, and inspect the ZIP. Captures are PDF-page renders created through native Word/Hancom (when configured), not simulated UI screenshots.
+
+
 These are **actual PDF page renders from historical Windows Microsoft Word/Hancom QA**, not fabricated UI screenshots or newly generated `0.44.0` outputs.
 
 **Word DOCX: complex table layout**
