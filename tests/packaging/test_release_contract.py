@@ -30,7 +30,12 @@ def test_single_package_engine_and_no_legacy_module():
 
 def test_readme_contains_real_asset_provenance_and_no_fictitious_badge():
     readme = (ROOT / 'README.md').read_text(encoding='utf8')
-    assert 'One Python API. Two document formats.' in readme
+    # The first screen may evolve; enforce the actual product promise, not a
+    # frozen advertising headline.
+    assert 'Microsoft Word DOCX' in readme
+    assert 'Hancom Hangul HWPX' in readme
+    assert 'from pywpdoc import Document' in readme
+    assert '0.44.0rc1' in readme
     assert 'docs/assets/readme/docx-hwpx-contract-comparison.png' in readme
     assert 'github.com/rydolabs/PyWPDoc' in readme
     assert 'badge.svg' not in readme
