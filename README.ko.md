@@ -30,6 +30,10 @@ doc.add_paragraph("Quarterly business report")
 doc.save("report.docx")
 ```
 
+![이전 Windows QA에서 실제 Microsoft Word로 출력한 DOCX 계약 문서](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
+
+*기존 Windows Word 출력 기록으로 신규 0.44.0 스크린샷은 아닙니다. [이미지 출처](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md).*
+
 ## 문서 생성 이상의 세 가지 기능
 
 ### 1. 템플릿 태그를 확인하고 실제 데이터로 치환
@@ -89,10 +93,6 @@ if preview.has_matches:
 ## 실제 문서 출력 이미지
 
 아래 이미지는 **이전 Windows 네이티브 Word/한컴 테스트에서 생성한 PDF 페이지 렌더링**입니다. 화면을 임의로 그린 목업이 아니며, 위 변경 추적·템플릿 예제의 실행 화면도 아닙니다.
-
-**Microsoft Word DOCX 계약 문서**
-
-![실제 Windows Word로 출력한 계약서 DOCX QA 이미지](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
 
 **Microsoft Word DOCX 복잡한 표**
 
