@@ -36,6 +36,10 @@ doc.save("report.docx")
 
 The same `Document` interface can also create `.hwpx` files; desktop Microsoft Word or Hancom is not needed for ordinary file generation or editing.
 
+![Actual contract document rendered by Microsoft Word during an earlier Windows QA run](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
+
+*Genuine historical Word PDF page render (not a new 0.44.0 screenshot). [Image provenance](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md).*
+
 ## Three workflows that go beyond document creation
 
 ### 1. Check template tags before filling them
@@ -95,10 +99,6 @@ Preview reports include structured match information. For bulk edits, verify the
 ## Real document previews
 
 These are **actual PDF page renders from historical Windows Microsoft Word/Hancom QA**, not fabricated UI screenshots or newly generated `0.44.0` outputs.
-
-**Word DOCX: contract page**
-
-![A business contract DOCX rendered with native Microsoft Word during historical Windows QA](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
 
 **Word DOCX: complex table layout**
 
