@@ -9,7 +9,9 @@ description = "Automate Word DOCX templates, safe text edits and tracked changes
 keywords = [
   "docx", "hwpx", "microsoft-word", "hancom", "hangul",
   "korean-documents", "word-processing", "office-documents",
-  "document-automation", "document-templates", "tracked-changes",
+  "document-automation", "document-templates", "template-validation",
+  "tracked-changes", "document-comparison", "document-review",
+  "text-replacement", "word-automation",
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
