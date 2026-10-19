@@ -92,6 +92,9 @@ if preview.has_matches:
 
 ## 실제 문서 출력 이미지
 
+**템플릿 처리 및 변경 추적의 실제 Word 출력 이미지가 필요하다면** [Windows 원클릭 스크린샷 도구](https://github.com/rydolabs/PyWPDoc/blob/main/tests/showcase/README.md)를 실행하세요. 저장소 ZIP을 풀고 `tests/showcase/RUN_SCREENSHOTS_WINDOWS.bat`를 더블클릭하면 테스트 문서와 가능한 네이티브 PDF·PNG 출력이 ZIP으로 묶입니다.
+
+
 아래 이미지는 **이전 Windows 네이티브 Word/한컴 테스트에서 생성한 PDF 페이지 렌더링**입니다. 화면을 임의로 그린 목업이 아니며, 위 변경 추적·템플릿 예제의 실행 화면도 아닙니다.
 
 **Microsoft Word DOCX 복잡한 표**
