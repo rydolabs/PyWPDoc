@@ -80,14 +80,33 @@ def create_sources(dest: Path) -> tuple[list[Path], dict]:
             "substitutions": replaced_count, "readonly_check_ok": checked.ok,
         }
 
-        # One-paragraph textual change; no unsupported structural movement.
+        # Multi-paragraph, native tracked revisions for a real business review.
+        # Keep structure compatible; only the text changes.
         before = Document.new(fmt)
-        before.add_paragraph("CONTRACT REVIEW | BEFORE")
-        before.add_paragraph("Contract amount: USD 10,000")
-        save(before, "03_revision_before")
         after = Document.new(fmt)
-        after.add_paragraph("CONTRACT REVIEW | BEFORE")
-        after.add_paragraph("Contract amount: USD 12,000")
+        amendments = [
+            ("PROCUREMENT AGREEMENT | REVIEW COPY", "PROCUREMENT AGREEMENT | REVIEW COPY"),
+            ("Customer: Acme Corp", "Customer: Acme Corporation"),
+            ("Project: Northwind regional rollout", "Project: Northwind national rollout with onsite training"),
+            ("Agreement ID: NW-2026-042", "Agreement ID: NW-2026-042"),
+            ("Scope: Deploy 12 workstations at the main office.", "Scope: Deploy 24 workstations across three regional offices."),
+            ("Contract price: USD 10,000, payable within 30 days.", "Contract price: USD 12,500, paid in two installments within 45 days."),
+            ("Delivery date: November 15, 2026.", "Delivery date: December 1, 2026."),
+            ("Implementation: Remote onboarding for one business day.", "Implementation: Onsite onboarding for three business days."),
+            ("Support: 3 months of email support during business hours.", "Support: 6 months of email and phone support, including weekends."),
+            ("Service level: Critical cases answered within 48 hours.", "Service level: Critical cases answered within 12 hours."),
+            ("Primary contact: alice@acme.test", "Primary contact: contracts@acme.test"),
+            ("Data handling: Files stored for 90 days after delivery.", "Data handling: Files deleted 30 days after final acceptance."),
+            ("Warranty: Defective equipment repaired within 20 days.", "Warranty: Defective equipment replaced within 7 days."),
+            ("Late delivery: Supplier may delay delivery by 3 business days.", "Late delivery: Supplier must notify customer within 1 business day."),
+            ("Approval status: Draft, pending internal review.", "Approval status: Approved by legal and finance teams."),
+            ("Confidentiality: Both parties protect nonpublic information.", "Confidentiality: Both parties protect nonpublic information."),
+        ]
+        assert sum(a != b for a, b in amendments) == 13
+        for previous, revised in amendments:
+            before.add_paragraph(previous)
+            after.add_paragraph(revised)
+        save(before, "03_revision_before")
         save(after, "04_revision_after")
         tracked = before.compare(after, author="Sample Reviewer")
         tracked_path = save(tracked, "05_tracked_review")
