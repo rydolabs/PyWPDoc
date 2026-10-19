@@ -145,6 +145,6 @@ jobs:
           if [[ "$RELEASE_TAG" == *rc* ]]; then
             flags+=(--prerelease --latest=false)
           fi
-          gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz dist/SHA256SUMS ${flags[@]}
+          gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz dist/SHA256SUMS "${flags[@]}"
           gh release view "$RELEASE_TAG" --repo "$REPO" --json tagName,isPrerelease,isDraft,url \
             --jq '{tag: .tagName, prerelease: .isPrerelease, draft: .isDraft, url: .url}'
