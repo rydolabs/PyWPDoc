@@ -37,11 +37,8 @@ def test_showcase_runner_creates_two_format_samples_and_uploadable_zip(tmp_path)
                 assert f"{stem}.{fmt}" in names
             report = json.loads(z.read(f"preview_report_{fmt}.json"))
             assert report["count"] == 1
-            assert b"Acme Corp" in z.read(f"02_template_filled.{fmt}") or (
-                "Acme Corp" in Document.open(
-                    _extract(z, f"02_template_filled.{fmt}", tmp_path)
-                ).paragraphs[-1].text
-            )
+            filled = Document.open(_extract(z, f"02_template_filled.{fmt}", tmp_path))
+            assert any("Acme Corp" in p.text for p in filled.paragraphs)
         summary = json.loads(z.read("results.json"))
         assert summary["package_version"] == "0.44.0"
         assert summary["word"]["status"] == "SKIP"
