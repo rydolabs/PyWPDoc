@@ -35,6 +35,10 @@ Homepage = "https://github.com/rydolabs/PyWPDoc"
 Source = "https://github.com/rydolabs/PyWPDoc"
 Issues = "https://github.com/rydolabs/PyWPDoc/issues"
 Documentation = "https://rydolabs.github.io/PyWPDoc/"
+"API Reference" = "https://rydolabs.github.io/PyWPDoc/reference/document/"
+"Template Guide" = "https://rydolabs.github.io/PyWPDoc/guide/templates/"
+"Tracked Changes" = "https://rydolabs.github.io/PyWPDoc/guide/compare/"
+"Quickstart" = "https://rydolabs.github.io/PyWPDoc/getting-started/quickstart/"
 Changelog = "https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
