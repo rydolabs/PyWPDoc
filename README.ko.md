@@ -124,4 +124,4 @@ DOCX와 HWPX 문서 생성·편집·검색·템플릿과 지원되는 텍스트 
 
 [PyPI](https://pypi.org/project/pywpdoc/) · [GitHub](https://github.com/rydolabs/PyWPDoc) · [한국어 설명서](https://rydolabs.github.io/PyWPDoc/ko/) · [라이선스](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE)
 
-**버전: 0.44.0.** 실제 안정 버전 게시에는 별도 승인이 필요합니다. 이전 시험 배포본 `0.44.0rc1`은 이미 PyPI에 게시되어 있습니다.
+**버전: 0.44.0.**
