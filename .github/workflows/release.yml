@@ -1,0 +1,150 @@
+# Opt-in GitHub Release only. Never publishes to PyPI.
+name: Create PyWPDoc GitHub Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'New version tag, e.g. v0.44.0rc1'
+        required: true
+        type: string
+      expected_sha:
+        description: 'Full 40-character SHA of successfully tested main commit'
+        required: true
+        type: string
+      confirm_release:
+        description: 'Type PUBLISH to authorize GitHub Release creation'
+        required: true
+        type: string
+
+permissions: {}
+concurrency:
+  group: pywpdoc-github-release
+  cancel-in-progress: false
+
+jobs:
+  verify-build:
+    name: Verify CI, version and distribution artifacts
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.expected_sha }}
+          persist-credentials: false
+      - name: Authorize and validate exact tested main commit and unused tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+          CONFIRM_RELEASE: ${{ inputs.confirm_release }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$CONFIRM_RELEASE" == PUBLISH ]] || { echo 'Type PUBLISH to confirm.' >&2; exit 1; }
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(rc[0-9]+)?$ ]] || { echo 'Bad release tag.' >&2; exit 1; }
+          [[ "$EXPECTED_SHA" =~ ^[a-f0-9]{40}$ ]] || { echo 'Provide exact lowercase 40-character commit SHA.' >&2; exit 1; }
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_SHA" ]] || { echo 'Checkout SHA mismatch.' >&2; exit 1; }
+          head_sha="$(gh api "repos/$REPO/git/ref/heads/main" --jq '.object.sha')"
+          [[ "$head_sha" == "$EXPECTED_SHA" ]] || { echo 'main moved; revalidate and retry.' >&2; exit 1; }
+          ci_count="$(gh api "repos/$REPO/actions/runs?head_sha=$EXPECTED_SHA&per_page=100" \
+            --jq '[.workflow_runs[] | select(.name == "PyWPDoc CI" and .event == "push" and .head_branch == "main" and .conclusion == "success")] | length')"
+          (( ci_count > 0 )) || { echo 'No successful main push CI for this SHA.' >&2; exit 1; }
+          [[ -z "$(git ls-remote --tags origin "refs/tags/$RELEASE_TAG")" ]] || {
+            echo 'Refusing to reuse existing release tag.' >&2; exit 1;
+          }
+          echo "Verified $RELEASE_TAG at $EXPECTED_SHA, passing main CI count: $ci_count"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Check package version matches requested tag
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import tomllib
+          project = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))["project"]
+          assert project["name"] == "pywpdoc"
+          assert project["version"] == os.environ["RELEASE_TAG"][1:]
+          print("Verified version:", project["version"])
+          PY
+      - name: Build and check wheel and source distribution
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade build twine
+          python -m build
+          python -m twine check --strict dist/*
+          ( cd dist && sha256sum *.whl *.tar.gz > SHA256SUMS )
+      - name: Install wheel and smoke-test both formats
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install dist/*.whl 'python-docx>=1.2,<2'
+          cd "$RUNNER_TEMP"
+          python "$GITHUB_WORKSPACE/scripts/wheel_smoke.py"
+      - name: Retain verified GitHub Release assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-release-dists
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30
+
+  release:
+    name: Create GitHub Release only (PyPI is separate)
+    needs: verify-build
+    runs-on: ubuntu-latest
+    # Optionally configure REQUIRED REVIEWERS for the github-release environment
+    # at Settings > Environments. Without that rule the PUBLISH input is the gate.
+    environment:
+      name: github-release
+      url: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ inputs.release_tag }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.expected_sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: github-release-dists
+          path: dist/
+      - name: Revalidate main, unused tag and SHA256 checksums
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_SHA" ]] || { echo 'Unexpected checkout SHA.' >&2; exit 1; }
+          head_sha="$(gh api "repos/$REPO/git/ref/heads/main" --jq '.object.sha')"
+          [[ "$head_sha" == "$EXPECTED_SHA" ]] || { echo 'main moved; no Release created.' >&2; exit 1; }
+          [[ -z "$(git ls-remote --tags origin "refs/tags/$RELEASE_TAG")" ]] || {
+            echo 'Tag already exists. Never overwrite existing tags.' >&2; exit 1;
+          }
+          ( cd dist && sha256sum --check SHA256SUMS )
+      - name: Create pre-release for rc tags and attach checked assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          flags=(--repo "$REPO" --target "$EXPECTED_SHA" --title "PyWPDoc $RELEASE_TAG" --generate-notes)
+          if [[ "$RELEASE_TAG" == *rc* ]]; then
+            flags+=(--prerelease --latest=false)
+          fi
+          gh release create "$RELEASE_TAG" dist/*.whl dist/*.tar.gz dist/SHA256SUMS "${flags[@]}"
+          gh release view "$RELEASE_TAG" --repo "$REPO" --json tagName,isPrerelease,isDraft,url \
+            --jq '{tag: .tagName, prerelease: .isPrerelease, draft: .isDraft, url: .url}'

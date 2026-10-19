@@ -51,3 +51,41 @@ def test_workflows_separate_ci_from_oidc_release_publish():
     assert 'name: pypi' in publish
     assert 'id-token: write' in publish
     assert 'pypa/gh-action-pypi-publish@release/v1' in publish
+
+
+def test_github_release_workflow_is_manual_sha_pinned_and_separate_from_pypi():
+    """Creating a GitHub Release must never happen on a routine CI push."""
+    release = (ROOT / '.github/workflows/release.yml').read_text(encoding='utf8')
+
+    # Validate YAML structure when PyYAML is installed (e.g., docs CI).
+    try:
+        import yaml
+    except ImportError:
+        pass
+    else:
+        parsed = yaml.load(release, Loader=yaml.BaseLoader)
+        assert parsed['on']['workflow_dispatch']['inputs']
+        assert 'push' not in parsed['on']
+        assert 'pull_request' not in parsed['on']
+        assert 'release' not in parsed['on']
+
+    assert 'on:\n  workflow_dispatch:' in release
+    assert 'github.ref == \'refs/heads/main\'' in release
+    assert 'release_tag:' in release
+    assert 'expected_sha:' in release
+    assert 'confirm_release:' in release
+    assert '[[ "$CONFIRM_RELEASE" == PUBLISH ]]' in release
+    assert 'gh api "repos/$REPO/git/ref/heads/main"' in release
+    assert 'head_branch == "main"' in release
+    assert 'conclusion == "success"' in release
+    assert 'git ls-remote --tags origin' in release
+    assert 'project["version"] == os.environ["RELEASE_TAG"][1:]' in release
+    assert 'python -m twine check --strict dist/*' in release
+    assert 'wheel_smoke.py' in release
+    assert 'sha256sum --check SHA256SUMS' in release
+    assert 'gh release create' in release
+    assert '--prerelease --latest=false' in release
+    assert 'name: github-release' in release
+    assert 'contents: write' in release
+    assert 'pypa/gh-action-pypi-publish' not in release
+    assert 'secrets.PYPI_API_TOKEN' not in release
