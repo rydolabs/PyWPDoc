@@ -5,8 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pywpdoc"
 version = "0.44.0rc1"
-description = "One Python API for DOCX and HWPX creation, editing, templates, and comparison"
-keywords = ["docx", "hwpx", "hangul", "word-processing", "document-automation", "track-changes"]
+description = "Create, edit, template and compare Word DOCX and Hancom Hangul HWPX with one Python API"
+keywords = [
+  "docx", "hwpx", "microsoft-word", "hancom", "hangul",
+  "korean-documents", "word-processing", "office-documents",
+  "document-automation", "document-templates", "tracked-changes",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Office Suites",
+  "Topic :: Text Editors :: Word Processors",
+  "Topic :: Text Processing :: Markup :: XML",
+]
 readme = {file = "README.md", content-type = "text/markdown"}
 license = "MIT"
 license-files = ["LICENSE"]
