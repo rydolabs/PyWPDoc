@@ -44,6 +44,11 @@ def test_showcase_runner_creates_two_format_samples_and_uploadable_zip(tmp_path)
         assert summary["word"]["status"] == "SKIP"
         assert summary["hancom"]["status"] == "SKIP"
         assert len(summary["scenarios"]) == 6
+        # Multi-paragraph tracked Word sample must contain many native revisions.
+        with ZipFile(_extract(z, "05_tracked_review.docx", tmp_path)) as docx_zip:
+            xml = docx_zip.read("word/document.xml")
+        assert xml.count(b"<w:ins ") >= 10
+        assert xml.count(b"<w:del ") >= 10
         assert all(e["status"] == "PASS" for e in summary["scenarios"].values())
         assert "READ_ME_FIRST.txt" in names
 
