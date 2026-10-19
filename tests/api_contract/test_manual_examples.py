@@ -24,7 +24,7 @@ def test_quickstart_creates_two_editable_files(tmp_path):
 
 
 @pytest.mark.parametrize("fmt", ["docx", "hwpx"])
-@pytest.mark.parametrize("name", ["search_replace", "template", "pictures", "compare", "sections"])
+@pytest.mark.parametrize("name", ["search_replace", "template", "pictures", "compare", "sections", "agent_tasks"])
 def test_documented_example_runs(fmt, name, tmp_path):
     path = _load(name).run(fmt, tmp_path)
     assert path.exists() and path.stat().st_size > 0

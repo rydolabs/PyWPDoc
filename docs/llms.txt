@@ -1,0 +1,24 @@
+# PyWPDoc
+
+> Unified Python API to create, edit, template, search and compare Microsoft Word DOCX and Hancom Hangul HWPX documents. Python 3.10+. Release candidate 0.44.0rc1; not an MCP server or universal file converter.
+
+## Start here
+- [Official docs](https://rydolabs.github.io/PyWPDoc/): introduction and setup
+- [Agent / coding assistant guide](https://rydolabs.github.io/PyWPDoc/agent-guide/): task-to-API selection, examples and unsupported cases
+- [English quickstart](https://rydolabs.github.io/PyWPDoc/getting-started/quickstart/): runnable creation in both formats
+- [한국어 매뉴얼](https://rydolabs.github.io/PyWPDoc/ko/): Korean documentation
+- [한국어 에이전트 가이드](https://rydolabs.github.io/PyWPDoc/ko/agent-guide/): Korean task selection
+
+## API and restrictions
+- [Document API signatures](https://rydolabs.github.io/PyWPDoc/reference/document/): common supported contract
+- [Results and errors](https://rydolabs.github.io/PyWPDoc/reference/results-errors/): error and return behavior
+- [Format-specific APIs](https://rydolabs.github.io/PyWPDoc/reference/formats/): expert escape hatches
+- [Compatibility](https://rydolabs.github.io/PyWPDoc/compatibility/): what is portable
+- [Limitations](https://rydolabs.github.io/PyWPDoc/limitations/): what is not supported
+
+## Runnable examples and testing evidence
+- [Tested source examples](https://github.com/rydolabs/PyWPDoc/tree/main/examples/manual): Python DOCX/HWPX recipes
+- [CI record](https://github.com/rydolabs/PyWPDoc/actions/runs/39183964408): Python/OS matrix and wheel/sdist build
+- [0.44.0rc1 Word/Hancom QA](https://rydolabs.github.io/PyWPDoc/testing/native-qa-0440rc1-2026-10-18/): scope and limitations
+
+Do not claim legacy .hwp support, lossless DOCX-to-HWPX conversion, pixel-identical layouts, new RC-specific PDF visual QA, or built-in MCP/AI integration.

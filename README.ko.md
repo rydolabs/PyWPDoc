@@ -1,59 +1,67 @@
-[**API 매뉴얼 (한국어)**](https://rydolabs.github.io/PyWPDoc/ko/) · [**전체 API Reference**](https://rydolabs.github.io/PyWPDoc/reference/document/)
-
 <div align="center">
 
 # PyWPDoc
 
-### Python API 하나로 DOCX와 HWPX 모두.
+### Python API 하나로 **Word DOCX와 한컴 한글 HWPX 문서를 모두 자동화**하세요.
 
-**Microsoft Word 문서와 한컴 한글 문서를 같은 Python 코드로 생성·수정·자동화하세요.**
+**업무 보고서 생성, 계약서·신청서 템플릿 채우기, 표 편집, 변경 내용 추적을 두 가지 문서 형식에서 같은 Python 코드로 처리합니다.**
 
-[English](https://github.com/rydolabs/PyWPDoc/blob/main/README.md) · [빠른 시작](#빠른-시작) · [실제 출력 화면](#실제-word--한컴-출력-화면) · [호환성](#지원-기능과-제한)
+[**한국어 API 매뉴얼**](https://rydolabs.github.io/PyWPDoc/ko/) · [English README](README.md) · [공통 API](https://rydolabs.github.io/PyWPDoc/ko/reference/) · [AI 에이전트 가이드](https://rydolabs.github.io/PyWPDoc/ko/agent-guide/) · [테스트 예제](examples/manual/)
 
-*Python 3.10 이상 · DOCX + HWPX · MIT 라이선스*
+Python 3.10 이상 · DOCX + HWPX · MIT 라이선스
 
 </div>
 
-## 실제 Word · 한컴 출력 화면
+## 한 번 작성하고, Word와 한글 문서를 각각 생성
 
-![Windows Word DOCX 출력과 한컴 HWPX 출력 비교](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
-
-*2026-10-18 Windows 네이티브 QA에서 저장·PDF 출력된 실제 문서입니다. DOCX는 Microsoft Word, HWPX는 한컴오피스에서 출력했습니다. 기밀 자료가 아닌 합성 계약서이며 프로그램별 줄바꿈과 페이지 배치는 다를 수 있습니다.*
+한 고객은 Word 파일을, 다른 고객은 한컴 한글 파일을 요구하나요? 두 가지 자동화 시스템을 따로 개발하지 않아도 됩니다.
 
 ```python
 from pywpdoc import Document
 
 for fmt in ("docx", "hwpx"):
     doc = Document.new(fmt)
-    doc.add_paragraph("분기 업무 보고서")
+    doc.add_paragraph("월간 업무 보고서")
     doc.save(f"report.{fmt}")
 ```
 
-한 번 작성한 코드로 편집 가능한 `report.docx`, `report.hwpx` 두 문서를 만듭니다.
+**결과:** 편집 가능한 `report.docx`, `report.hwpx` 두 파일이 생성됩니다. 일반 문서 생성·편집에 Word/한컴 설치는 필요하지 않으며, 실기 렌더링 검증에는 각각의 프로그램이 필요합니다.
+
+![Word DOCX와 한컴 HWPX 문서의 실제 출력 비교](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
+
+*이전 빌드에서 실행한 합성 계약서 실기 출력 예시입니다. 동일한 페이지 배치나 0.44.0rc1 신규 PDF 시각 검증을 의미하지 않습니다. [이미지 출처](docs/assets/readme/PROVENANCE.md) · [최신 후보 실기 검증](docs/testing/native-qa-0440rc1-2026-10-18.md).*
+
+## 어떤 작업에 필요한가요?
+
+| 필요한 작업 | 사용할 API |
+| --- | --- |
+| Word와 한글용 보고서·양식 동시 생성 | `Document.new("docx")` / `Document.new("hwpx")` |
+| 계약서·신청서의 고객 정보 자동 입력 | `check_template()` → `render_template()` |
+| 기존 문서의 이름·날짜·금액 안전하게 치환 | `Document.open()` → `preview_replace()` → `replace_text()` |
+| 문단·표·이미지 자동 생성·수정 | 공통 API, 필요 시 형식별 전문가용 API |
+| 지원 구조에서 문서 변경 내용 검토 | `compare()` |
+
+**차별점:** [`python-docx`](https://github.com/python-openxml/python-docx)는 DOCX 전용 라이브러리입니다. PyWPDoc는 **Word와 한컴 문서가 동시에 필요한 업무 자동화**에 적합합니다. 다른 도구의 모든 고급 기능을 대체하는 제품은 아닙니다.
 
 ## 설치
 
-PyPI에 **첫 배포가 완료된 후**에는 다음처럼 설치합니다.
+**PyPI 첫 배포 전**인 현재는 GitHub 소스에서 설치하세요.
 
 ```bash
-python -m pip install "pywpdoc[unified]"
+git clone https://github.com/rydolabs/PyWPDoc.git
+cd PyWPDoc
+python -m pip install -e ".[unified]"
 ```
 
-`unified` 옵션은 DOCX 처리에 필요한 `python-docx`를 포함합니다. HWPX만 사용할 경우 `pip install pywpdoc`로 설치할 수 있습니다. 현재 `0.44.0rc1`은 **검토용 후보이며 아직 PyPI에 게시하지 않았습니다.**
+**PyPI 0.44.0rc1이 실제 게시된 후**:
 
-## 다른 라이브러리와 차별점
+```bash
+python -m pip install "pywpdoc[unified]==0.44.0rc1"
+```
 
-| 작업 | 포맷 전용 도구 | PyWPDoc |
-| --- | --- | --- |
-| Word + 한글 동시 생성 | 서로 다른 문서 API를 따로 연결 | `Document.new(fmt)` 공통 호출 |
-| 문단·표 자동화 | 포맷별 코드 작성 | 지원 범위 내에서 공통 인터페이스 |
-| 템플릿 | 포맷별 치환 로직 필요 | 공통 템플릿 검사·치환 |
-| 검색·교체·비교 | 포맷별 구현 차이 | 공통 검색·정규식·비교 API |
-| 출력 품질 확인 | 외부 QA 구성 필요 | Windows Word/한컴 검증 시나리오 제공 |
+`[unified]`는 DOCX 처리를 위한 `python-docx`를 설치합니다. HWPX만 사용한다면 기본 `pywpdoc` 설치로 충분합니다. [설치 설명](https://rydolabs.github.io/PyWPDoc/ko/quickstart/).
 
-[`python-docx`](https://github.com/python-openxml/python-docx)는 DOCX 전문 라이브러리이며 HWPX 전문 도구와는 역할이 다릅니다. **PyWPDoc의 장점은 두 문서 형식에 공통으로 사용하는 업무 흐름을 만든다는 점**입니다. 기존 도구의 모든 고급 기능을 대체한다고 주장하지 않습니다.
-
-## 빠른 시작
+## 바로 실행하는 구매 요청서 예제
 
 ```python
 from pywpdoc import Document
@@ -69,35 +77,52 @@ for fmt in ("docx", "hwpx"):
     doc.save(f"purchase-request.{fmt}")
 ```
 
-### 복잡한 표도 실제 출력으로 확인했습니다
+[실행 검증 Quickstart](examples/manual/quickstart.py) · [템플릿](examples/manual/template.py) · [미리보기·치환](examples/manual/search_replace.py) · [문서 비교](examples/manual/compare.py) · [에이전트 통합 예제](examples/manual/agent_tasks.py)
 
-![병합된 표 DOCX와 HWPX 출력](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-comparison.png)
+### 템플릿 수정 전 검사
 
-*2026-10-17 Windows 네이티브 QA의 합성 자산 관리 대장 예제입니다. 화면의 `QA` 표기는 검증용으로 삽입한 문자열입니다.*
+```python
+from pywpdoc import Document
+
+doc = Document.open("template.hwpx")
+data = {"customer": {"name": "Example Ltd"}}
+report = doc.check_template(data)
+if not report.ok:
+    raise ValueError(f"미해결 변수: {report.missing_keys}")
+doc.render_template(data)
+doc.save("filled.hwpx")
+```
 
 ## 지원 기능과 제한
 
 | 기능 | DOCX | HWPX |
 | --- | --- | --- |
 | 생성·열기·수정·저장 | 지원 | 지원 |
-| 문단·표·템플릿·검색·정규식 | 검증한 범위에서 지원 | 검증한 범위에서 지원 |
-| 변경 추적 | 지원 사례 있음 | 지원 사례 있음 |
-| 표 행 변경 추적 | 지원 사례 있음 | 미지원, 명시적으로 거부 |
-| Word와 한컴의 완전히 동일한 페이지 배치 | 보장하지 않음 | 보장하지 않음 |
+| 문단·표·이미지·구역 | 공통 지원 범위 | 공통 지원 범위 |
+| 검색·정규식·템플릿 | 검증한 사례 지원 | 검증한 사례 지원 |
+| 변경 추적 | 검증한 구조 지원 | 검증한 구조 지원 |
+| 표 행 변경 추적 | 지원 사례 있음 | **미지원** |
+| Word/한컴 출력 배치 완전 일치 | **보장하지 않음** | **보장하지 않음** |
 
-`DOCX → HWPX` 완전한 무손실 변환기는 아니며, 각 형식의 고급 기능과 호환 범위는 다릅니다. [호환성 설명](https://github.com/rydolabs/PyWPDoc/blob/main/docs/COMPATIBILITY.md)과 [알려진 제약](https://github.com/rydolabs/PyWPDoc/blob/main/KNOWN_ISSUES.md)을 참고하세요.
+`save()`는 형식을 변환하지 않으며 `rebuild()`도 범용 DOCX↔HWPX 무손실 변환 API가 아닙니다. 레거시 바이너리 `.hwp` 파일은 공통 `Document.open()`에서 지원하지 않습니다. [호환성](https://rydolabs.github.io/PyWPDoc/compatibility/) · [제약](https://rydolabs.github.io/PyWPDoc/ko/limitations/).
 
-## 테스트와 검증
+## 검증 근거
 
-**0.44.0rc1 Windows 최신 실기 QA:** Word·한컴 핵심 사례 **11/11**, 확장 사례 **7/7** 통과했습니다. 단, 이번 새 후보에서는 PDF 렌더링·픽셀 비교를 별도로 실행하지 않았습니다. 이전 버전의 합성 업무 문서 **48/48건 네이티브 열기·재저장 및 PDF 출력** 결과와는 구분합니다. [최신 후보 QA 근거](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md) · [테스트 구성](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md) · [검증 이력](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/README.md).
+- GitHub Actions: Ubuntu/Windows Python 3.10~3.13, 배포물·매뉴얼 **10/10 성공**. [CI](https://github.com/rydolabs/PyWPDoc/actions/runs/39183964408)
+- 0.44.0rc1 Word/한컴 최신 실기 QA: **11/11 핵심, 7/7 확장** 통과. [QA 증거](docs/testing/native-qa-0440rc1-2026-10-18.md)
+- 이전 버전에서의 **48/48 PDF 출력**은 이번 후보의 신규 PDF 시각 검증 결과가 아닙니다.
+- 테스트 제외 항목은 [tests/README.md](tests/README.md)를 참고하세요.
 
-```bash
-python -m pip install -e ".[test,unified]"
-python scripts/run_public_tests.py -q -m "not native and not performance"
-```
+## AI 에이전트·코딩 도우미를 위한 안내
 
-## 문서 및 참여
+공통 코드에서는 `from pywpdoc import Document`를 사용하세요. `doc.docx`, `doc.hwpx`, `doc.backend`는 형식 전용 전문가용 API입니다. 템플릿·치환은 먼저 검사한 뒤 같은 파일 형식으로 저장하세요.
 
-[사용법](https://github.com/rydolabs/PyWPDoc/blob/main/docs/USAGE.md) · [API 전략](https://github.com/rydolabs/PyWPDoc/blob/main/docs/API_STRATEGY.md) · [변경 내역](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [기여](https://github.com/rydolabs/PyWPDoc/blob/main/CONTRIBUTING.md) · [보안](https://github.com/rydolabs/PyWPDoc/blob/main/SECURITY.md)
+[에이전트 작업별 가이드](https://rydolabs.github.io/PyWPDoc/ko/agent-guide/) · [공식 API](https://rydolabs.github.io/PyWPDoc/ko/reference/) · [문서 색인](https://rydolabs.github.io/PyWPDoc/llms.txt)
 
-**후보 버전: `0.44.0rc1` / 아직 GitHub Release 및 PyPI 미게시.** 라이선스: [MIT](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE).
+PyWPDoc는 Python 라이브러리이며 자체 MCP 서버는 제공하지 않습니다. AI 검색 순위는 보장되지 않습니다.
+
+---
+
+[한국어 매뉴얼](https://rydolabs.github.io/PyWPDoc/ko/) · [변경 이력](CHANGELOG.md) · [보안](SECURITY.md) · [기여](CONTRIBUTING.md) · [MIT 라이선스](LICENSE)
+
+**현재 버전:** `0.44.0rc1` 후보 — GitHub Release / PyPI 최초 게시 전.

@@ -1,5 +1,7 @@
 # `pywpdoc.Document` API Reference
 
+**Which API fits the task?** See [AI agent / task selection](../agent-guide.md) first, then consult the explicit signatures below. These cover editable Word DOCX and Hancom Hangul HWPX, not legacy binary `.hwp` or universal format conversion.
+
 For **0.44.0rc1**. This is the *documented common contract*; backend passthrough names are **not** guaranteed portable. All paths accept `str | pathlib.Path` where noted.
 
 ## Constructors and format
@@ -42,5 +44,7 @@ For **0.44.0rc1**. This is the *documented common contract*; backend passthrough
 ## Expert / not portable
 
 `doc.backend`, `doc.native`, `doc.unwrap()`, `doc.docx`, `doc.hwpx`, `Document.rebuild()`, `doc.rebuild_from()`, and `doc.export_snapshot()` are for advanced use. `rebuild()` is **not** a universal format converter. In particular, DOCX → HWPX rebuild rejects unsupported portable snapshot import.
+
+For **runnable, CI-tested workflows** (create, preflight template, preview replacement and save/reopen) see the [agent guide](../agent-guide.md) and [quickstart](../getting-started/quickstart.md). Avoid relying on undocumented backend passthrough attributes in portable code.
 
 See [result types and exceptions](results-errors.md), [format-specific APIs](formats.md), and [compatibility](../compatibility.md).

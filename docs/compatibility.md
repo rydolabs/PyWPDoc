@@ -14,6 +14,6 @@
 | Generic file-format conversion | No universal guarantee | No universal guarantee | Unsupported as a generic converter |
 | Word/Hancom pixel-identical pagination | Not guaranteed | Not guaranteed | Not a contract |
 
-**Important:** common *method names* do not mean identical XML structures or native editor rendering. The 2026-10-18 historical Windows QA concerns a prior build. The reorganized release candidate must still complete its native Windows acceptance run.
+**Important:** common *method names* do not mean identical XML structures or native editor rendering. The reorganized 0.44.0rc1 candidate passed [focused Word/Hancom native acceptance](testing/native-qa-0440rc1-2026-10-18.md) (11/11 focused and 7/7 extended QA). A previous build supplied the 48/48 PDF-export evidence; the new candidate has not completed a fresh PDF/pixel-layout run.
 
 [Limitations](limitations.md) · [API Reference](reference/document.md)

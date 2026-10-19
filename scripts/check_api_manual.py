@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 TESTED_EXAMPLES = {
     "quickstart", "search_replace", "template", "pictures", "compare", "sections",
+    "agent_tasks",
 }
 
 

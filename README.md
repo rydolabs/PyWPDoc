@@ -2,67 +2,73 @@
 
 # PyWPDoc
 
-### One Python API. Two document formats.
+### Automate Microsoft Word DOCX **and** Hancom Hangul HWPX with one Python API.
 
-**Create, edit, and automate Microsoft Word (DOCX) and Hancom Hangul (HWPX) documents—without maintaining two separate codebases.**
+**Create editable reports, fill document templates, update tables and compare supported revisions in both file formats—without maintaining two document automation codebases.**
 
-**[API Manual (English / 한국어)](https://rydolabs.github.io/PyWPDoc/)** · [API Reference](https://rydolabs.github.io/PyWPDoc/reference/document/) · **[한국어](https://github.com/rydolabs/PyWPDoc/blob/main/README.ko.md)** · [Quick start](#quick-start) · [Real documents](#see-real-outputs) · [Feature support](#feature-support-and-limits) · [Examples](https://github.com/rydolabs/PyWPDoc/tree/main/examples) · [Testing](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md)
+[**English / 한국어 API manual**](https://rydolabs.github.io/PyWPDoc/) · [**한국어 README**](README.ko.md) · [API reference](https://rydolabs.github.io/PyWPDoc/reference/document/) · [AI agent guide](https://rydolabs.github.io/PyWPDoc/agent-guide/) · [Tested examples](examples/manual/)
 
-*Python 3.10+ · DOCX + HWPX · MIT License*
+Python 3.10+ · DOCX + HWPX · MIT License
 
 </div>
 
-## See real outputs
+## One script. Two editable Office documents.
 
-![The same PyWPDoc business-document scenario rendered by Microsoft Word (DOCX) and Hancom Hangul (HWPX), as PDFs on Windows](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
-
-*Actual native Windows QA output, 2026-10-18. DOCX PDF: Microsoft Word; HWPX PDF: Hancom Office. These are synthetic test contracts, not customer data. The two editors may paginate or space content differently; pixel-identical layout is not promised.*
-
-### From Python to both files
+If your workflow needs a Word report **and** a Korean Hangul document, the same Python code can create both:
 
 ```python
 from pywpdoc import Document
 
 for fmt in ("docx", "hwpx"):
     doc = Document.new(fmt)
-    doc.add_paragraph("Quarterly report / 분기 보고서")
+    doc.add_paragraph("Monthly report / 월간 보고서")
     doc.save(f"report.{fmt}")
 ```
 
-**One workflow, two native file formats.** `report.docx` and `report.hwpx` are real editable documents, not PDF screenshots.
+**Output:** `report.docx` + `report.hwpx`—editable files, not PDF screenshots or renamed extensions. Desktop Word or Hancom is **not required** for ordinary creation and editing; native rendering/COM validation requires those applications.
+
+![DOCX and HWPX business-document example rendered by Microsoft Word and Hancom](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
+
+*Real native Windows PDF rendering of a **historical synthetic test case**. This is not a fresh 0.44.0rc1 visual-QA screenshot and does not imply identical Word/Hancom pagination. [Image provenance](docs/assets/readme/PROVENANCE.md) · [Current candidate QA evidence](docs/testing/native-qa-0440rc1-2026-10-18.md).*
+
+## Why use PyWPDoc?
+
+| Your real-world task | PyWPDoc approach |
+| --- | --- |
+| Produce reports and forms for Word and Korean Hangul users | `Document.new("docx")` / `Document.new("hwpx")` |
+| Fill contracts, certificates, applications or purchase orders | `check_template()` before `render_template()` |
+| Replace names, dates, or amounts in existing documents | `Document.open()` → `preview_replace()` → `replace_text()` |
+| Build paragraphs, tables, images and sections | A portable common subset plus format-specific expert APIs |
+| Review supported edits with tracked changes | `before.compare(after)` without mutating the originals |
+
+**What makes it different?** [`python-docx`](https://github.com/python-openxml/python-docx) is a mature DOCX-specific library. PyWPDoc focuses on **workflows that must handle both DOCX and HWPX**; it does not replace every editor-specific feature.
 
 ## Install
 
-After the first PyPI publication:
+**Until the first PyPI publication**, use the public source checkout:
 
 ```bash
-python -m pip install "pywpdoc[unified]"
+git clone https://github.com/rydolabs/PyWPDoc.git
+cd PyWPDoc
+python -m pip install -e ".[unified]"
 ```
 
-`[unified]` installs the optional `python-docx` package required for the DOCX backend. For HWPX-only use, `pip install pywpdoc` is sufficient. **PyPI installation is not available until the first release is published.** Until then, install the reviewed wheel or source checkout.
+**After** `0.44.0rc1` has actually been published to PyPI:
 
-## Why PyWPDoc?
+```bash
+python -m pip install "pywpdoc[unified]==0.44.0rc1"
+```
 
-| Your task | With a format-specific library | With PyWPDoc |
-| --- | --- | --- |
-| Generate both Word and Hangul files | Typically maintain different document libraries and adapters | Use the same `Document.new(fmt)` API |
-| Work with paragraphs and tables | Each SDK exposes format-specific types | Shared methods for supported operations |
-| Fill repeatable business templates | Separate integration for each file type | Common template checking and rendering |
-| Compare or safely replace content | Format-dependent mutation handling | Shared search / replace / compare entry points |
-| Validate output in real editors | Build a separate QA flow | Includes reproducible Word/Hancom QA scenarios |
+The `[unified]` extra installs `python-docx` for DOCX; `pywpdoc` alone suffices for HWPX-only work. [Installation details](https://rydolabs.github.io/PyWPDoc/getting-started/installation/).
 
-**How is this different?** [`python-docx`](https://github.com/python-openxml/python-docx) is a mature DOCX-focused library. HWPX-specific tools focus on Hangul files. PyWPDoc is for **workflows that must handle both DOCX and HWPX** using a shared high-level interface. This is a design distinction—not a claim that PyWPDoc replaces every expert feature of other tools.
-
-## Quick start
-
-### Paragraphs and tables
+## Quickstart: a report with a table
 
 ```python
 from pywpdoc import Document
 
 for fmt in ("docx", "hwpx"):
     doc = Document.new(fmt)
-    doc.add_paragraph("Purchase request")
+    doc.add_paragraph("Purchase request / 구매 요청서")
     table = doc.add_table(2, 2)
     table.cell(0, 0).text = "Item"
     table.cell(0, 1).text = "Quantity"
@@ -71,68 +77,54 @@ for fmt in ("docx", "hwpx"):
     doc.save(f"purchase-request.{fmt}")
 ```
 
-### Open a template, preview, then edit
+The [runnable quickstart](examples/manual/quickstart.py) is exercised for both formats by API-contract CI tests.
+
+### Safer template filling
 
 ```python
 from pywpdoc import Document
 
-doc = Document.open("template.hwpx")
-report = doc.check_template({"customer": {"name": "Example Ltd"}})
-print(report)
-doc.render_template({"customer": {"name": "Example Ltd"}})
+doc = Document.open("template.hwpx")  # .docx works too
+data = {"customer": {"name": "Example Ltd"}}
+report = doc.check_template(data)       # read-only
+if not report.ok:
+    raise ValueError(f"Unresolved variables: {report.missing_keys}")
+doc.render_template(data)
 doc.save("filled.hwpx")
 ```
 
-### Business documents and merged tables
+[Template example](examples/manual/template.py) · [Preview and replace](examples/manual/search_replace.py) · [Tracked comparison](examples/manual/compare.py) · [Agent workflow example](examples/manual/agent_tasks.py)
 
-![Real native DOCX and HWPX complex-table output](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-comparison.png)
+## Supported features and boundaries
 
-*Asset register / nested merged-table scenario from the Windows native QA corpus (2026-10-17). The scenario includes visible QA markers. See [capture provenance](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/PROVENANCE.md).*
-
-## Feature support and limits
-
-| Capability | DOCX | HWPX |
+| Feature | DOCX | HWPX |
 | --- | --- | --- |
-| Create / open / edit / save | Supported | Supported |
-| Paragraphs, tables, shared document facade | Supported | Supported |
-| Literal / regex search and replacement | Supported cases | Supported cases |
-| Template preflight and rendering | Supported cases | Supported cases |
-| Compare / tracked text changes | Supported cases | Supported cases |
-| Tracked character / paragraph formatting | Verified cases | Verified Hancom 2020 cases |
-| Tracked table-row insertion / deletion | Supported cases | Not supported; explicitly rejected |
-| Identical Word/Hancom pagination | **Not guaranteed** | **Not guaranteed** |
+| Create, open, edit and save | Yes | Yes |
+| Paragraphs, tables, pictures and sections | Common supported subset | Common supported subset |
+| Literal/regex search, replacements and templates | Supported cases | Supported cases |
+| Tracked text comparisons | Supported structures | Supported structures |
+| Table-row insertion/deletion tracking | Supported cases | **Unsupported** |
+| Pixel-identical Word/Hancom layout | **Not guaranteed** | **Not guaranteed** |
 
-Some expert/backend APIs differ. Direct DOCX access may use `python-docx`. HWPX behavior and layout vary by Hancom version. See [compatibility](https://github.com/rydolabs/PyWPDoc/blob/main/docs/COMPATIBILITY.md) and [limitations](https://github.com/rydolabs/PyWPDoc/blob/main/KNOWN_ISSUES.md). Cross-format `rebuild()` is **not** a full-fidelity converter; unsupported paths reject rather than silently changing content.
+`save()` **does not convert file formats**; `rebuild()` is not a universal lossless DOCX↔HWPX converter, and binary legacy `.hwp` input is not supported by `Document.open()`. Native expert APIs differ by backend. [Compatibility](https://rydolabs.github.io/PyWPDoc/compatibility/) · [Known limitations](https://rydolabs.github.io/PyWPDoc/limitations/).
 
-## Tested in practice, not only against XML
+## Verified, with clearly stated limits
 
-The project has documented regression tests and Windows native Office validation. A historical build passed **48/48 document open-save validations and 48/48 PDF exports** for 24 synthetic business scenarios × 2 formats. That historical run is separate from release-candidate testing.
+- **Hosted CI:** 10/10 jobs passed across Ubuntu/Windows Python 3.10–3.13, wheel/sdist and MkDocs checks. [CI run](https://github.com/rydolabs/PyWPDoc/actions/runs/39183964408).
+- **0.44.0rc1 Windows native validation:** 11/11 focused Word/Hancom cases, 7/7 extended QA stages, including long/stress documents. [Evidence and exact scope](docs/testing/native-qa-0440rc1-2026-10-18.md).
+- **Historical visual outputs:** a *previous build* passed 48/48 native PDF exports. The 0.44.0rc1 results archive has **no new PDF/pixel-layout comparison**.
+- **Public test suite:** fixtures, omissions and skips are documented in [tests/README.md](tests/README.md). Hosted CI does not run desktop COM validation.
 
-**New 0.44.0rc1 Windows Word/Hancom native acceptance (2026-10-18):** 11/11 focused cases PASS, 7/7 extended QA stages PASS, and 0 failed/errored/timed out. The extended cases include 523-paragraph / 9-table and 1,103-paragraph / 13-table documents with actual Word/Hancom reopen-save roundtrips and semantic inspections. The QA archive also reports 23 Common API, 52 python-docx port, 4 bold-normalization and 16 compare-safety passing tests; these are subtests, **not additional native case totals**. The RC-specific archive does **not** include a fresh PDF-export or pixel-layout comparison run. [Read the precise RC evidence and limitations](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md).
+## For AI coding assistants and agents
 
-[Portable test tiers](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md) · [Test evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/README.md) · [Windows QA](https://github.com/rydolabs/PyWPDoc/tree/main/tests/native) · [QA generators](https://github.com/rydolabs/PyWPDoc/tree/main/tests/generators/business_docs)
+Use `from pywpdoc import Document` for portable operations. Pick the document format, preflight edits, and save in the same format. Treat `doc.backend`, `doc.docx`, `doc.hwpx` as **expert-only** APIs.
 
-```bash
-python -m pip install -e ".[test,unified]"
-python scripts/run_public_tests.py -q -m "not native and not performance"
-```
+[Task → API selection guide](https://rydolabs.github.io/PyWPDoc/agent-guide/) · [Exact signatures](https://rydolabs.github.io/PyWPDoc/reference/document/) · [Machine-readable document index](https://rydolabs.github.io/PyWPDoc/llms.txt)
 
-The legacy private source fixture is not included in this public repository. Tests requiring it are explicitly excluded or skipped. Native COM and visual checks require locally installed Word/Hancom and are not run on generic hosted CI.
+PyWPDoc is a Python library—not a built-in MCP server or a native model tool. Publication does not guarantee ranking or selection by AI assistants.
 
-## One package, one public API
+---
 
-Only the `pywpdoc` Python package is distributed. The unified API lives at
-`pywpdoc.Document`; format-specific backends and shared implementation reside
-under `pywpdoc` (including the private `pywpdoc._engine` package).
+[한국어](README.ko.md) · [Documentation](https://rydolabs.github.io/PyWPDoc/) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md) · [MIT License](LICENSE)
 
-The engine is an **implementation detail**, not a second product to install.
-Use `from pywpdoc import Document` for application code. The reorganized package
-passed its focused 0.44.0rc1 Windows native Office acceptance cases (see [RC evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md)).
-
-## More information
-
-[Online API manual](https://rydolabs.github.io/PyWPDoc/) · [User guide](https://github.com/rydolabs/PyWPDoc/blob/main/docs/USAGE.md) · [API strategy](https://github.com/rydolabs/PyWPDoc/blob/main/docs/API_STRATEGY.md) · [Quality gates](https://github.com/rydolabs/PyWPDoc/blob/main/QUALITY_GATES.md) · [Changelog](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [Security](https://github.com/rydolabs/PyWPDoc/blob/main/SECURITY.md) · [Contributing](https://github.com/rydolabs/PyWPDoc/blob/main/CONTRIBUTING.md)
-
-This repository is source and test code. It does not include Microsoft Word or Hancom Office. **Current release candidate: `0.44.0rc1` (review build; not yet published).** The [GitHub Actions matrix](https://github.com/rydolabs/PyWPDoc/actions/runs/39137635602) has passed (10/10 jobs).
-
-**License:** [MIT](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE) · © 2026 Rydolabs · [Third-party notices](https://github.com/rydolabs/PyWPDoc/blob/main/THIRD_PARTY_NOTICES.md)
+**Version:** `0.44.0rc1` release candidate (GitHub Release and PyPI publication pending).

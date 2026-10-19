@@ -29,6 +29,7 @@ nav:
       - Quickstart: getting-started/quickstart.md
       - API layers: getting-started/concepts.md
   - User guide:
+      - AI agents and coding assistants: agent-guide.md
       - Create & edit: guide/create-edit.md
       - Tables: guide/tables.md
       - Pictures & sections: guide/pictures-sections.md
@@ -43,6 +44,7 @@ nav:
   - Known limitations: limitations.md
   - 한국어 안내:
       - 시작: ko/index.md
+      - AI 에이전트 가이드: ko/agent-guide.md
       - 설치 · 빠른 시작: ko/quickstart.md
       - API 사용법: ko/api.md
       - 제한 사항: ko/limitations.md
