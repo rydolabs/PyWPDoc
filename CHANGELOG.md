@@ -4,9 +4,9 @@
 - Consolidate deterministic business QA, Windows COM validation tools, and historical synthetic fixtures under `tests/`.
 - Introduce authentic native-rendered README image assets and unified README metadata for GitHub/PyPI.
 - Prepare CI and manual-approval PyPI Trusted Publishing workflows.
-- No intentional changes to business document algorithms. Windows native retest required after restructure.
+- No intentional changes to business document algorithms. The 0.44.0rc1 packaged wheel passed focused Windows Word/Hancom native tests: 11/11 core cases and 7/7 extended QA stages (no new PDF/pixel-layout run).
 - Add explicit portable `pywpdoc.Document` methods, optional image-format sniffing, and a documented no-argument `add_section` contract without changing the backend engines.
-- Introduce bilingual MkDocs API manual, tested DOCX/HWPX examples, API contract tests, and CI docs-build gate (site not yet published).
+- Introduce bilingual MkDocs API manual, tested DOCX/HWPX examples, API contract tests, and CI docs-build gate; [API manual deployed to GitHub Pages](https://rydolabs.github.io/PyWPDoc/).
 
 # 0.43.1rc2 — Untracked-format safety and CI candidate (2026-10-15)
 

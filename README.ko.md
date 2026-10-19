@@ -1,4 +1,4 @@
-[**API 매뉴얼 (한국어)**](https://github.com/rydolabs/PyWPDoc/blob/main/docs/ko/index.md) · [**전체 API Reference**](https://github.com/rydolabs/PyWPDoc/blob/main/docs/reference/document.md)
+[**API 매뉴얼 (한국어)**](https://rydolabs.github.io/PyWPDoc/ko/) · [**전체 API Reference**](https://rydolabs.github.io/PyWPDoc/reference/document/)
 
 <div align="center">
 
@@ -89,7 +89,7 @@ for fmt in ("docx", "hwpx"):
 
 ## 테스트와 검증
 
-2026-10-18 이전 소스의 Windows 네이티브 검증에서 업무 문서 **48/48건 열기·재저장, PDF 48/48건**을 확인했습니다. 이는 이번 폴더 개편 후보가 Windows에서 다시 통과했다는 의미는 아닙니다. [테스트 구성](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md) · [검증 이력](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/README.md).
+**0.44.0rc1 Windows 최신 실기 QA:** Word·한컴 핵심 사례 **11/11**, 확장 사례 **7/7** 통과했습니다. 단, 이번 새 후보에서는 PDF 렌더링·픽셀 비교를 별도로 실행하지 않았습니다. 이전 버전의 합성 업무 문서 **48/48건 네이티브 열기·재저장 및 PDF 출력** 결과와는 구분합니다. [최신 후보 QA 근거](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md) · [테스트 구성](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md) · [검증 이력](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/README.md).
 
 ```bash
 python -m pip install -e ".[test,unified]"

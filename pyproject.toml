@@ -17,7 +17,7 @@ dependencies = ["lxml>=4.9"]
 Homepage = "https://github.com/rydolabs/PyWPDoc"
 Source = "https://github.com/rydolabs/PyWPDoc"
 Issues = "https://github.com/rydolabs/PyWPDoc/issues"
-Documentation = "https://github.com/rydolabs/PyWPDoc/tree/main/docs"
+Documentation = "https://rydolabs.github.io/PyWPDoc/"
 Changelog = "https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]

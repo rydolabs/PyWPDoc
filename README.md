@@ -6,7 +6,7 @@
 
 **Create, edit, and automate Microsoft Word (DOCX) and Hancom Hangul (HWPX) documents—without maintaining two separate codebases.**
 
-**[API Manual (English / 한국어)](https://github.com/rydolabs/PyWPDoc/blob/main/docs/index.md)** · [API Reference](https://github.com/rydolabs/PyWPDoc/blob/main/docs/reference/document.md) · **[한국어](https://github.com/rydolabs/PyWPDoc/blob/main/README.ko.md)** · [Quick start](#quick-start) · [Real documents](#see-real-outputs) · [Feature support](#feature-support-and-limits) · [Examples](https://github.com/rydolabs/PyWPDoc/tree/main/examples) · [Testing](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md)
+**[API Manual (English / 한국어)](https://rydolabs.github.io/PyWPDoc/)** · [API Reference](https://rydolabs.github.io/PyWPDoc/reference/document/) · **[한국어](https://github.com/rydolabs/PyWPDoc/blob/main/README.ko.md)** · [Quick start](#quick-start) · [Real documents](#see-real-outputs) · [Feature support](#feature-support-and-limits) · [Examples](https://github.com/rydolabs/PyWPDoc/tree/main/examples) · [Testing](https://github.com/rydolabs/PyWPDoc/blob/main/tests/README.md)
 
 *Python 3.10+ · DOCX + HWPX · MIT License*
 
@@ -131,7 +131,7 @@ passed its focused 0.44.0rc1 Windows native Office acceptance cases (see [RC evi
 
 ## More information
 
-[User guide](https://github.com/rydolabs/PyWPDoc/blob/main/docs/USAGE.md) · [API strategy](https://github.com/rydolabs/PyWPDoc/blob/main/docs/API_STRATEGY.md) · [Quality gates](https://github.com/rydolabs/PyWPDoc/blob/main/QUALITY_GATES.md) · [Changelog](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [Security](https://github.com/rydolabs/PyWPDoc/blob/main/SECURITY.md) · [Contributing](https://github.com/rydolabs/PyWPDoc/blob/main/CONTRIBUTING.md)
+[Online API manual](https://rydolabs.github.io/PyWPDoc/) · [User guide](https://github.com/rydolabs/PyWPDoc/blob/main/docs/USAGE.md) · [API strategy](https://github.com/rydolabs/PyWPDoc/blob/main/docs/API_STRATEGY.md) · [Quality gates](https://github.com/rydolabs/PyWPDoc/blob/main/QUALITY_GATES.md) · [Changelog](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [Security](https://github.com/rydolabs/PyWPDoc/blob/main/SECURITY.md) · [Contributing](https://github.com/rydolabs/PyWPDoc/blob/main/CONTRIBUTING.md)
 
 This repository is source and test code. It does not include Microsoft Word or Hancom Office. **Current release candidate: `0.44.0rc1` (review build; not yet published).** The [GitHub Actions matrix](https://github.com/rydolabs/PyWPDoc/actions/runs/39137635602) has passed (10/10 jobs).
 
