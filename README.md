@@ -139,4 +139,4 @@ The examples use public methods and are based on the tested DOCX/HWPX workflows.
 
 [GitHub](https://github.com/rydolabs/PyWPDoc) · [PyPI](https://pypi.org/project/pywpdoc/) · [Documentation](https://rydolabs.github.io/PyWPDoc/) · [Changelog](https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md) · [License](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE)
 
-**Version: 0.44.0.** Stable-release publication is a separate, explicitly approved step; the previous `0.44.0rc1` is already on PyPI.
+**Version: 0.44.0.**
