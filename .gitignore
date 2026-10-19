@@ -21,6 +21,8 @@ htmlcov/
 !tests/native/*.hwpx
 !docs/assets/readme/**/*.png
 
+tests/showcase/OUTPUT/
+tests/showcase/.venv-showcase/
 HWP_RC_RESULTS*/
 business_qa_results/
 merge_grid_native_results/
