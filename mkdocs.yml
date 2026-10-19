@@ -43,6 +43,7 @@ nav:
   - Compatibility: compatibility.md
   - Known limitations: limitations.md
   - Release automation: releasing.md
+  - Search discovery / repository Topics: discovery.md
   - 한국어 안내:
       - 시작: ko/index.md
       - AI 에이전트 가이드: ko/agent-guide.md
