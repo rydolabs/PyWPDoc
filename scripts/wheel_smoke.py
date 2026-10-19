@@ -1,7 +1,7 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from pywpdoc import Document
-import docx  # confirm optional python-docx dependency
+import docx  # confirm python-docx is installed by the default package
 
 with TemporaryDirectory() as tmp:
     for fmt in ("docx", "hwpx"):
