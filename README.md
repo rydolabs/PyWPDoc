@@ -142,3 +142,11 @@ pip install pywpdoc
 <sub>**Scope:** `.docx` and `.hwpx` are separate editable formats. PyWPDoc does not convert between them or handle legacy binary `.hwp`. Native tracked comparison supports documented text/structure/format cases; unsupported changes (including HWPX table-row insertion/deletion tracking) are rejected rather than silently discarded. Actual layout depends on the native editor.</sub>
 
 [GitHub](https://github.com/rydolabs/PyWPDoc) · [PyPI](https://pypi.org/project/pywpdoc/) · [MIT License](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE)
+
+### Verified scope and earlier QA evidence
+
+**Microsoft Word DOCX** and **Hancom Hangul HWPX** are independently editable document formats, served by PyWPDoc's documented common API. For non-repeating templates, the basic read-only check is `doc.check_template(data)`.
+
+Additional native-app QA: [Word contract](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png) · [DOCX/HWPX contract comparison](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png) · [Word complex tables](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-docx.png) · [image provenance](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md).
+
+**Version: 0.44.0.**
