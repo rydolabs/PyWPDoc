@@ -16,7 +16,7 @@ Built on **python-docx**, with advanced document workflows and a shared API for 
 
 **BEFORE + AFTER → a third Word document with native tracked revisions.**
 
-![The same 16-paragraph document before, after, and with native Word Track Changes](docs/assets/readme/track-changes-three-versions.png)
+![The same 16-paragraph document before, after, and with native Word Track Changes](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/track-changes-three-versions.png)
 
 ```python
 from pywpdoc import Document
@@ -29,10 +29,10 @@ before.compare(after, author="Reviewer").save("reviewed.docx")
 
 **13 of 16 paragraphs changed.** The output contains supported native insertion/deletion revisions, not just red-colored text. Review the generated DOCX in Microsoft Word; neither original is overwritten.
 
-**Open the actual files:** [Before `.docx`](examples/track_changes/03_revision_before.docx) · [After `.docx`](examples/track_changes/04_revision_after.docx) · [Tracked `.docx`](examples/track_changes/05_tracked_review.docx) · [Word-exported PDF](examples/track_changes/05_tracked_review_word_export.pdf)  
-**HWPX sample:** [Before](examples/track_changes/03_revision_before.hwpx) · [After](examples/track_changes/04_revision_after.hwpx) · [Tracked](examples/track_changes/05_tracked_review.hwpx)
+**Open the actual files:** [Before `.docx`](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/03_revision_before.docx) · [After `.docx`](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/04_revision_after.docx) · [Tracked `.docx`](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/05_tracked_review.docx) · [Word-exported PDF](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/05_tracked_review_word_export.pdf)  
+**HWPX sample:** [Before](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/03_revision_before.hwpx) · [After](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/04_revision_after.hwpx) · [Tracked](https://github.com/rydolabs/PyWPDoc/blob/main/examples/track_changes/05_tracked_review.hwpx)
 
-<sub>Image provenance: Before/After were rendered from the supplied DOCX files with LibreOffice for preview; the redline is cropped from the actual Microsoft Word PDF export. Word PDF inline revisions can overlap visually. See [image evidence](docs/assets/readme/PROVENANCE.md).</sub>
+<sub>Image provenance: Before/After were rendered from the supplied DOCX files with LibreOffice for preview; the redline is cropped from the actual Microsoft Word PDF export. Word PDF inline revisions can overlap visually. See [image evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md).</sub>
 
 ## What do you gain over python-docx?
 
@@ -90,9 +90,9 @@ for fmt in ("docx", "hwpx"):
 
 **Actual output — three editable table rows, not three lines inside one cell:**
 
-![Real PyWPDoc table template before and after repeating the row three times](docs/assets/readme/table-repeat-before-after.png)
+![Real PyWPDoc table template before and after repeating the row three times](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/table-repeat-before-after.png)
 
-**Run it:** [Complete Python script](examples/table_repeat/generate.py) · [DOCX template](examples/table_repeat/purchase-order-template.docx) / [filled document](examples/table_repeat/purchase-order-filled.docx) · [HWPX template](examples/table_repeat/purchase-order-template.hwpx) / [filled document](examples/table_repeat/purchase-order-filled.hwpx)
+**Run it:** [Complete Python script](https://github.com/rydolabs/PyWPDoc/blob/main/examples/table_repeat/generate.py) · [DOCX template](https://github.com/rydolabs/PyWPDoc/blob/main/examples/table_repeat/purchase-order-template.docx) / [filled document](https://github.com/rydolabs/PyWPDoc/blob/main/examples/table_repeat/purchase-order-filled.docx) · [HWPX template](https://github.com/rydolabs/PyWPDoc/blob/main/examples/table_repeat/purchase-order-template.hwpx) / [filled document](https://github.com/rydolabs/PyWPDoc/blob/main/examples/table_repeat/purchase-order-filled.hwpx)
 
 <sub>Actual PyWPDoc-generated DOCX files rendered with LibreOffice for the preview. The generated DOCX and HWPX files were saved and reopened to verify all three rows. This is not presented as a native Microsoft Word or Hancom screenshot. [Template guide →](https://rydolabs.github.io/PyWPDoc/guide/templates/)</sub>
 
@@ -115,9 +115,9 @@ for fmt in ("docx", "hwpx"):
 
 **Actual native-app QA: the same business table in Microsoft Word and Hancom Office.** Cropped to the content instead of comparing page margins.
 
-![Cropped actual DOCX Microsoft Word and HWPX Hancom Office table outputs](docs/assets/readme/docx-hwpx-table-excerpts.png)
+![Cropped actual DOCX Microsoft Word and HWPX Hancom Office table outputs](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-table-excerpts.png)
 
-<sub>Source: previous Windows-native QA, 2026-10-18. These are genuine PDF-page excerpts, **not** proof of pixel-identical layout or document-format conversion. [Original full comparison](docs/assets/readme/docx-hwpx-original-qa.png) · [Image provenance](docs/assets/readme/PROVENANCE.md).</sub>
+<sub>Source: previous Windows-native QA, 2026-10-18. These are genuine PDF-page excerpts, **not** proof of pixel-identical layout or document-format conversion. [Original full comparison](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-original-qa.png) · [Image provenance](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md).</sub>
 
 ## 4. Preview before changing files.
 
