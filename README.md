@@ -2,120 +2,143 @@
 
 # PyWPDoc
 
-### Reviewable Word document automation in Python.
+### Keep python-docx. Go beyond python-docx.
 
-**Compare document versions with native tracked changes. Check template tags before filling. Preview edits before modifying files.**
+**Native Track Changes · Repeating Word tables · Safe template checks · DOCX + HWPX**
 
-**Microsoft Word DOCX first** · Hancom Hangul HWPX also supported · Python 3.10+ · MIT
+Built on **python-docx**, with advanced document workflows and a shared API for Hancom HWPX.
 
-[**Quickstart**](#quickstart) · [**Document API**](https://rydolabs.github.io/PyWPDoc/reference/document/) · [**Tracked Changes**](https://rydolabs.github.io/PyWPDoc/guide/compare/) · [**Templates**](https://rydolabs.github.io/PyWPDoc/guide/templates/) · [**한국어**](https://github.com/rydolabs/PyWPDoc/blob/main/README.ko.md)
+[**Track Changes**](#1-real-document-changes-not-just-a-diff-report) · [**Table templates**](#2-one-template-row-many-real-rows) · [**DOCX + HWPX**](#3-python-docx-underneath-two-formats-on-top) · [**API reference**](https://rydolabs.github.io/PyWPDoc/reference/document/) · [**한국어**](https://github.com/rydolabs/PyWPDoc/blob/main/README.ko.md)
 
 </div>
 
-## Install
+## 1. Real document changes. Not just a diff report.
 
-```bash
-pip install pywpdoc
-```
+**BEFORE + AFTER → a third Word document with native tracked revisions.**
 
-Starting with **0.44.0**, one default installation supports both DOCX and HWPX. For the already-published **0.44.0rc1**, use `pip install "pywpdoc[unified]==0.44.0rc1"` to enable DOCX. The old `[unified]` extra remains accepted.
-
-## See what makes it different
-
-### 1. Before + After → one document with tracked changes
-
-Change an agreement, then keep the edits **reviewable in Word**, instead of delivering only a silently overwritten file.
-
-| BEFORE | AFTER |
-| --- | --- |
-| Amount: **USD 10,000** | Amount: **USD 12,500** |
-| Delivery: **Nov 15** | Delivery: **Dec 1** |
-| Support: **3 months** | Support: **6 months** |
-
-**TRACKED REVIEW:** supported text changes are saved as native DOCX revisions, including inserted and deleted text. The original documents remain unchanged.
+![The same 16-paragraph document before, after, and with native Word Track Changes](docs/assets/readme/track-changes-three-versions.png)
 
 ```python
 from pywpdoc import Document
 
-before = Document.open("agreement-before.docx")
-after = Document.open("agreement-after.docx")
+before = Document.open("examples/track_changes/03_revision_before.docx")
+after  = Document.open("examples/track_changes/04_revision_after.docx")
 
-review = before.compare(after, author="Reviewer")
-review.save("agreement-reviewed.docx")
+before.compare(after, author="Reviewer").save("reviewed.docx")
 ```
 
-The tested [16-paragraph example](https://github.com/rydolabs/PyWPDoc/tree/main/tests/showcase) changes 13 paragraphs. A genuine Word **Review → All Markup** screenshot, cropped to the most readable edits, will accompany this example after human visual acceptance. We intentionally do **not** present an unverified or reconstructed redline image as a Word screenshot.
+**13 of 16 paragraphs changed.** The output contains supported native insertion/deletion revisions, not just red-colored text. Review the generated DOCX in Microsoft Word; neither original is overwritten.
 
-[**Compare API and limitations →**](https://rydolabs.github.io/PyWPDoc/guide/compare/)
+**Open the actual files:** [Before `.docx`](examples/track_changes/03_revision_before.docx) · [After `.docx`](examples/track_changes/04_revision_after.docx) · [Tracked `.docx`](examples/track_changes/05_tracked_review.docx) · [Word-exported PDF](examples/track_changes/05_tracked_review_word_export.pdf)  
+**HWPX sample:** [Before](examples/track_changes/03_revision_before.hwpx) · [After](examples/track_changes/04_revision_after.hwpx) · [Tracked](examples/track_changes/05_tracked_review.hwpx)
 
-### 2. Check templates before filling them
+<sub>Image provenance: Before/After were rendered from the supplied DOCX files with LibreOffice for preview; the redline is cropped from the actual Microsoft Word PDF export. Word PDF inline revisions can overlap visually. See [image evidence](docs/assets/readme/PROVENANCE.md).</sub>
+
+## What do you gain over python-docx?
+
+| Capability | `python-docx` built-in | **PyWPDoc** |
+|:---|:---|:---|
+| Paragraphs, tables, runs and styles | **Yes** | **Yes — python-docx backend** |
+| Access existing python-docx APIs | Native | **`doc.docx` / `doc.unwrap()`** |
+| Compare files into *native* tracked revisions | Manual XML / external logic | **`before.compare(after)`** |
+| Repeat actual template table rows | Manual / another package | **`render_template(..., table_rows=True)`** |
+| Check missing template data *before* mutation | Manual | **`check_template()`** |
+| Preview and safely replace text across runs | Custom code | **`preview_replace()` + `replace_text()`** |
+| Edit Hancom HWPX documents | No | **Common `Document` API** |
+
+*Compared with python-docx's built-in API, not the broader ecosystem. PyWPDoc deliberately uses python-docx as its DOCX backend; it is not a claim of drop-in API parity between DOCX and HWPX.*
+
+## 2. Give it Python data. Get real repeating table rows.
+
+**One template row + a Python list → a complete, editable purchase order — in DOCX and HWPX.**
+
+**Word / Hangul template** — design the table once; mark a single row for repetition:
+
+| Item | Qty |
+|:---|---:|
+| `{{#items}}{{name}}` | `{{qty}}{{/items}}` |
+
+**Python — supply the values:**
 
 ```python
 from pywpdoc import Document
 
-doc = Document.open("template.docx")
-data = {"customer": {"name": "Acme Corp"}}
-check = doc.check_template(data)  # Read-only preflight
-if not check.ok:
-    raise ValueError(check.missing_keys)
-doc.render_template(data)
-doc.save("agreement-filled.docx")
+data = {
+    "order_id": "PO-2048",
+    "company": "ACME Procurement",
+    "items": [
+        {"name": "Notebook", "qty": 12},
+        {"name": "Monitor", "qty": 8},
+        {"name": "USB-C Dock", "qty": 12},
+    ],
+}
 ```
 
-`Customer: {{customer.name}}` → **`Customer: Acme Corp`**
+**Validate, fill, and save both formats:**
 
-Catch missing or malformed template data **before** rendering. [**Template API →**](https://rydolabs.github.io/PyWPDoc/guide/templates/)
+```python
+for fmt in ("docx", "hwpx"):
+    doc = Document.open(f"examples/table_repeat/purchase-order-template.{fmt}")
 
-### 3. Preview replacements before making changes
+    check = doc.check_template(data, sections=True, table_rows=True)
+    if not check.ok:
+        raise ValueError(check.to_dict())
+
+    doc.render_template(data, sections=True, table_rows=True)
+    doc.save(f"purchase-order-filled.{fmt}")
+```
+
+**Actual output — three editable table rows, not three lines inside one cell:**
+
+![Real PyWPDoc table template before and after repeating the row three times](docs/assets/readme/table-repeat-before-after.png)
+
+**Run it:** [Complete Python script](examples/table_repeat/generate.py) · [DOCX template](examples/table_repeat/purchase-order-template.docx) / [filled document](examples/table_repeat/purchase-order-filled.docx) · [HWPX template](examples/table_repeat/purchase-order-template.hwpx) / [filled document](examples/table_repeat/purchase-order-filled.hwpx)
+
+<sub>Actual PyWPDoc-generated DOCX files rendered with LibreOffice for the preview. The generated DOCX and HWPX files were saved and reopened to verify all three rows. This is not presented as a native Microsoft Word or Hancom screenshot. [Template guide →](https://rydolabs.github.io/PyWPDoc/guide/templates/)</sub>
+
+## 3. python-docx underneath. Two formats on top.
+
+**Keep the python-docx APIs you already use. Add portable workflows when you need them.**
+
+```python
+from pywpdoc import Document
+
+doc = Document.open("existing.docx")
+doc.docx.add_heading("Appendix", level=1)  # Real python-docx Document
+doc.save("updated.docx")
+
+for fmt in ("docx", "hwpx"):
+    report = Document.new(fmt)
+    report.add_paragraph("Quarterly report / 분기 보고서")
+    report.save(f"quarterly.{fmt}")
+```
+
+**Actual native-app QA: the same business table in Microsoft Word and Hancom Office.** Cropped to the content instead of comparing page margins.
+
+![Cropped actual DOCX Microsoft Word and HWPX Hancom Office table outputs](docs/assets/readme/docx-hwpx-table-excerpts.png)
+
+<sub>Source: previous Windows-native QA, 2026-10-18. These are genuine PDF-page excerpts, **not** proof of pixel-identical layout or document-format conversion. [Original full comparison](docs/assets/readme/docx-hwpx-original-qa.png) · [Image provenance](docs/assets/readme/PROVENANCE.md).</sub>
+
+## 4. Preview before changing files.
 
 ```python
 doc = Document.open("draft.docx")
-preview = doc.preview_replace("Draft", "Approved")  # No mutation
+preview = doc.preview_replace("Draft", "Approved")  # Read-only
 if preview.has_matches:
     doc.replace_text("Draft", "Approved")
     doc.save("approved.docx")
 ```
 
-The preview includes a structured report of candidate edits. [**Search and replace API →**](https://rydolabs.github.io/PyWPDoc/guide/search-replace/)
+Template validation and replacement previews inspect changes **before** you mutate the document. [Search & replace →](https://rydolabs.github.io/PyWPDoc/guide/search-replace/)
 
-## Quickstart
+---
 
-Create an editable Word file in three steps:
-
-```python
-from pywpdoc import Document
-
-doc = Document.new("docx")
-doc.add_paragraph("Quarterly business report")
-doc.save("report.docx")
+```bash
+pip install pywpdoc
 ```
 
-DOCX and HWPX use the documented common `Document` API; save each document in its own format. Word/Hancom desktop apps are not needed for normal Python file creation and editing.
+[**API reference**](https://rydolabs.github.io/PyWPDoc/reference/document/) · [Quickstart](https://rydolabs.github.io/PyWPDoc/getting-started/quickstart/) · [Templates](https://rydolabs.github.io/PyWPDoc/guide/templates/) · [Tracked Changes](https://rydolabs.github.io/PyWPDoc/guide/compare/) · [Compatibility](https://rydolabs.github.io/PyWPDoc/compatibility/) · [Limitations](https://rydolabs.github.io/PyWPDoc/limitations/)
 
-## Actual native-rendered document previews
+<sub>**Scope:** `.docx` and `.hwpx` are separate editable formats. PyWPDoc does not convert between them or handle legacy binary `.hwp`. Native tracked comparison supports documented text/structure/format cases; unsupported changes (including HWPX table-row insertion/deletion tracking) are rejected rather than silently discarded. Actual layout depends on the native editor.</sub>
 
-The following images are **real Windows Word/Hancom PDF-page renders from earlier QA**. They demonstrate document output, not the specific tracked-review example above.
-
-![Genuine earlier Windows Word contract PDF page](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
-
-[See a Word table screenshot](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-docx.png) · [See DOCX/HWPX comparison (Korean Hangul support)](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
-
-*Image provenance: [native asset evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md). This does not demonstrate new 0.44.0 pixel-layout QA or guarantee identical pagination between formats.*
-
-## Jump straight to the API
-
-| Need | Documentation |
-| --- | --- |
-| Exact `Document` signatures | [**Document API Reference**](https://rydolabs.github.io/PyWPDoc/reference/document/) |
-| Compare and tracked revisions | [Tracked Changes](https://rydolabs.github.io/PyWPDoc/guide/compare/) |
-| Template tags and validation | [Templates](https://rydolabs.github.io/PyWPDoc/guide/templates/) |
-| Find, preview, replace | [Text editing](https://rydolabs.github.io/PyWPDoc/guide/search-replace/) |
-| Runnable examples and installation | [Quickstart](https://rydolabs.github.io/PyWPDoc/getting-started/quickstart/) · [Installation](https://rydolabs.github.io/PyWPDoc/getting-started/installation/) |
-| Errors and agent workflows | [Results & Errors](https://rydolabs.github.io/PyWPDoc/reference/results-errors/) · [Agent Guide](https://rydolabs.github.io/PyWPDoc/agent-guide/) |
-| Korean manual | [한국어 API 매뉴얼](https://rydolabs.github.io/PyWPDoc/ko/) |
-
-**Scope:** PyWPDoc supports a documented common subset of editable DOCX and HWPX operations. `compare()` is not a generic diff/merge engine and can reject unsupported structural changes. The library does not open legacy binary `.hwp`, guarantee lossless DOCX↔HWPX conversion, provide a built-in MCP server or promise pixel-identical layouts. [Compatibility](https://rydolabs.github.io/PyWPDoc/compatibility/) · [Known limitations](https://rydolabs.github.io/PyWPDoc/limitations/).
-
-[Source](https://github.com/rydolabs/PyWPDoc) · [PyPI](https://pypi.org/project/pywpdoc/) · [Native QA evidence for the earlier RC](https://github.com/rydolabs/PyWPDoc/blob/main/docs/testing/native-qa-0440rc1-2026-10-18.md) · [MIT License](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE)
-
-**Version: 0.44.0.**
+[GitHub](https://github.com/rydolabs/PyWPDoc) · [PyPI](https://pypi.org/project/pywpdoc/) · [MIT License](https://github.com/rydolabs/PyWPDoc/blob/main/LICENSE)
