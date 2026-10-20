@@ -98,11 +98,7 @@ The following images are **real Windows Word/Hancom PDF-page renders from earlie
 
 ![Genuine earlier Windows Word contract PDF page](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/contract-word.png)
 
-![Genuine earlier Windows Word complex-table PDF page](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-docx.png)
-
-**Additional format: Hancom Hangul HWPX**
-
-![Earlier Windows Word DOCX and Hancom HWPX PDF output comparison](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
+[See a Word table screenshot](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/complex-tables-docx.png) · [See DOCX/HWPX comparison (Korean Hangul support)](https://raw.githubusercontent.com/rydolabs/PyWPDoc/main/docs/assets/readme/docx-hwpx-contract-comparison.png)
 
 *Image provenance: [native asset evidence](https://github.com/rydolabs/PyWPDoc/blob/main/docs/assets/readme/PROVENANCE.md). This does not demonstrate new 0.44.0 pixel-layout QA or guarantee identical pagination between formats.*
 
