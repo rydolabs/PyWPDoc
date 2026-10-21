@@ -42,12 +42,10 @@ for fmt in ("docx", "hwpx"):
 
 ## 설치
 
-현재 `0.44.0rc1`은 최초 PyPI 게시 전이므로 GitHub 소스에서 설치합니다.
+`0.44.0`부터 기본 설치에 DOCX 및 HWPX 의존성이 모두 포함됩니다.
 
 ```bash
-git clone https://github.com/rydolabs/PyWPDoc.git
-cd PyWPDoc
-python -m pip install -e ".[unified]"
+pip install pywpdoc
 ```
 
-PyPI에 실제 배포된 이후에만 `python -m pip install "pywpdoc[unified]==0.44.0rc1"`를 사용하세요. Python 3.10 이상이 필요합니다.
+기존 시험 배포 `0.44.0rc1`에서는 DOCX 이용 시 `pip install "pywpdoc[unified]==0.44.0rc1"`을 사용합니다. 신규 `0.44.0`의 실제 공개는 별도 승인 단계입니다. Python 3.10 이상이 필요합니다.

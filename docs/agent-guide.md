@@ -19,15 +19,13 @@ This guide records the verified public API, runnable examples, unsupported reque
 
 ## Install
 
-Python 3.10+. **Before the first PyPI publication**, use the reviewed source:
+Python 3.10+. **Version 0.44.0 and later** includes both formats by default:
 
 ```bash
-git clone https://github.com/rydolabs/PyWPDoc.git
-cd PyWPDoc
-python -m pip install -e ".[unified]"
+pip install pywpdoc
 ```
 
-After `0.44.0rc1` is actually on PyPI: `python -m pip install "pywpdoc[unified]==0.44.0rc1"`. The `[unified]` extra supplies `python-docx` for DOCX; the default package handles HWPX.
+The earlier published `0.44.0rc1` prerelease requires `pip install "pywpdoc[unified]==0.44.0rc1"` for DOCX. `0.44.0` is the new three-part release target and is published only by the separate approved release workflow; the `[unified]` extra remains accepted for backwards compatibility.
 
 ## Runnable, CI-tested workflows
 

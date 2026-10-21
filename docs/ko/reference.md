@@ -1,6 +1,6 @@
 # 한국어 공개 API 레퍼런스
 
-기준 버전: **0.44.0rc1 후보**. 이 페이지는 `from pywpdoc import Document`의 공통 API를 설명합니다. 아래 `backend`의 자동 위임 기능은 모두 공식 지원 대상이라는 뜻이 아닙니다.
+기준 버전: **0.44.0**. 이 페이지는 `from pywpdoc import Document`의 공통 API를 설명합니다. 아래 `backend`의 자동 위임 기능은 모두 공식 지원 대상이라는 뜻이 아닙니다.
 
 ## 생성·저장
 

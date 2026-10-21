@@ -1,4 +1,12 @@
-## 0.44.0rc1 — release structure candidate (not published)
+## 0.44.0 — simpler install and clearer document automation showcase
+
+- Install both Word DOCX and Hancom Hangul HWPX engines with `pip install pywpdoc`; the `[unified]` extra remains for backwards-compatible command lines.
+- Lead the English PyPI/GitHub README with template validation, read-only text replacement previews and supported tracked revisions; add short Word-first examples and direct API reference links.
+- Add existing genuine Windows Word/Hancom QA output screenshots with precise historical provenance (not a new stable-version PDF visual acceptance).
+- Refresh the English/Korean documentation and three-number version presentation. No changes to DOCX/HWPX business document algorithms are intended.
+- Release readiness still requires final CI and any applicable native review; publication is separate from this source change.
+
+## 0.44.0rc1 — first published pre-release (2026-10-19)
 
 - Consolidate product implementation under `src/pywpdoc/`, with internal `_engine`; pre-release legacy import shims are deliberately omitted.
 - Consolidate deterministic business QA, Windows COM validation tools, and historical synthetic fixtures under `tests/`.

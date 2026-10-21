@@ -57,7 +57,7 @@ jobs:
       - name: Install built wheel and run two-format smoke outside source tree
         shell: bash
         run: |
-          python -m pip install dist/*.whl 'python-docx>=1.2,<2'
+          python -m pip install dist/*.whl
           cd "$RUNNER_TEMP"
           python "$GITHUB_WORKSPACE/scripts/wheel_smoke.py"
       - name: Upload validated artifacts (for review only)

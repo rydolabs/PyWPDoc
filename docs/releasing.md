@@ -4,7 +4,7 @@ PyWPDoc GitHub Release publication is **not triggered by pushes, pull requests, 
 
 ## Before you release
 
-1. Ensure the Windows Word/Hancom acceptance work applicable to the release was reviewed and recorded. For `0.44.0rc1`, see the [focused RC QA evidence](testing/native-qa-0440rc1-2026-10-18.md); fresh RC-specific PDF/pixel-layout QA was *not* included.
+1. Ensure the Windows Word/Hancom acceptance work applicable to the release was reviewed and recorded. For the published `0.44.0rc1`, see the [focused RC QA evidence](testing/native-qa-0440rc1-2026-10-18.md); fresh RC-specific PDF/pixel-layout QA was *not* included. **Do not treat that historical evidence as final approval for new version `0.44.0`.**
 2. Merge all approved documentation, metadata and product changes into `main`.
 3. Confirm that **PyWPDoc CI** ran from a `push` on **that exact `main` commit** and passed all ten jobs.
 4. Confirm that the target tag does **not** exist and `pyproject.toml` contains exactly the requested package version.
@@ -16,7 +16,7 @@ Open **[Actions → Create PyWPDoc GitHub Release](https://github.com/rydolabs/P
 
 | Input | Example for first candidate |
 | --- | --- |
-| `release_tag` | `v0.44.0rc1` |
+| `release_tag` | `v0.44.0` (only after new version QA and approval) |
 | `expected_sha` | The **full, current 40-character SHA of `main`**, after the final workflow change has merged and passed CI. Do **not** reuse an earlier SHA. |
 | `confirm_release` | `PUBLISH` (case sensitive) |
 

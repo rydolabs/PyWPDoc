@@ -4,12 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pywpdoc"
-version = "0.44.0rc1"
-description = "Create, edit, template and compare Word DOCX and Hancom Hangul HWPX with one Python API"
+version = "0.44.0"
+description = "Automate Word DOCX templates, safe text edits and tracked changes; also supports Hancom HWPX"
 keywords = [
   "docx", "hwpx", "microsoft-word", "hancom", "hangul",
   "korean-documents", "word-processing", "office-documents",
-  "document-automation", "document-templates", "tracked-changes",
+  "document-automation", "document-templates", "template-validation",
+  "tracked-changes", "document-comparison", "document-review",
+  "text-replacement", "word-automation",
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -28,13 +30,17 @@ readme = {file = "README.md", content-type = "text/markdown"}
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
-dependencies = ["lxml>=4.9"]
+dependencies = ["lxml>=4.9", "python-docx>=1.2,<2"]
 
 [project.urls]
 Homepage = "https://github.com/rydolabs/PyWPDoc"
 Source = "https://github.com/rydolabs/PyWPDoc"
 Issues = "https://github.com/rydolabs/PyWPDoc/issues"
 Documentation = "https://rydolabs.github.io/PyWPDoc/"
+"API Reference" = "https://rydolabs.github.io/PyWPDoc/reference/document/"
+"Template Guide" = "https://rydolabs.github.io/PyWPDoc/guide/templates/"
+"Tracked Changes" = "https://rydolabs.github.io/PyWPDoc/guide/compare/"
+"Quickstart" = "https://rydolabs.github.io/PyWPDoc/getting-started/quickstart/"
 Changelog = "https://github.com/rydolabs/PyWPDoc/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]

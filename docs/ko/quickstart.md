@@ -1,20 +1,24 @@
 # 설치와 빠른 시작
 
-정식 PyPI 최초 배포 **이후**:
+**`0.44.0`부터는 한 번의 설치로 Word DOCX와 한컴 HWPX 둘 다 사용할 수 있습니다.**
 
 ```bash
-python -m pip install "pywpdoc[unified]"
+pip install pywpdoc
 ```
 
-현재는 검토본 소스 폴더에서:
+기존 PyPI 시험 버전 `0.44.0rc1`에서 DOCX를 사용하려면 `pip install "pywpdoc[unified]==0.44.0rc1"`을 실행합니다. `0.44.0` 새 버전의 실제 게시 여부는 [PyPI](https://pypi.org/project/pywpdoc/)에서 확인하세요.
 
-```bash
-python -m pip install -e ".[unified]"
+```python
+from pywpdoc import Document
+
+doc = Document.new("docx")
+doc.add_paragraph("Hello, PyWPDoc!")
+doc.save("hello.docx")
 ```
 
-- Python 3.10 이상 필요.
-- HWPX만 사용한다면 `pywpdoc` 기본 설치로 충분하며, DOCX에는 `python-docx`가 필요합니다.
-- Word나 한컴오피스는 일반 문서 생성·편집에 필요하지 않지만, 각각의 프로그램에서 열기·PDF 출력 검증을 할 때는 필요합니다.
+- Python 3.10 이상이 필요합니다.
+- 기본 의존성에 `python-docx`가 포함되며 기존 `[unified]` 설치 옵션도 계속 허용합니다.
+- Word·한컴 데스크톱 프로그램이 없어도 일반 문서 생성·편집이 가능합니다. 해당 프로그램에서 실제 PDF/레이아웃 검증 시에는 설치가 필요합니다.
 
 [전체 실행 예제: `examples/manual/quickstart.py`](https://github.com/rydolabs/PyWPDoc/blob/main/examples/manual/quickstart.py)
 
@@ -22,4 +26,6 @@ python -m pip install -e ".[unified]"
 --8<-- "examples/manual/quickstart.py"
 ```
 
-실행: `python examples/manual/quickstart.py ./output` → `quickstart.docx`, `quickstart.hwpx` 생성.
+`python examples/manual/quickstart.py ./output`으로 `quickstart.docx`와 `quickstart.hwpx`를 생성할 수 있습니다.
+
+[전체 공통 API](../reference/document.md) · [템플릿 처리](guide/templates.md) · [변경 추적](guide/compare.md)

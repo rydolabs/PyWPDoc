@@ -2,7 +2,7 @@
 
 **Which API fits the task?** See [AI agent / task selection](../agent-guide.md) first, then consult the explicit signatures below. These cover editable Word DOCX and Hancom Hangul HWPX, not legacy binary `.hwp` or universal format conversion.
 
-For **0.44.0rc1**. This is the *documented common contract*; backend passthrough names are **not** guaranteed portable. All paths accept `str | pathlib.Path` where noted.
+For **0.44.0**. This is the *documented common contract*; backend passthrough names are **not** guaranteed portable. All paths accept `str | pathlib.Path` where noted.
 
 ## Constructors and format
 

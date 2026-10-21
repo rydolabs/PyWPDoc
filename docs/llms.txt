@@ -1,6 +1,6 @@
 # PyWPDoc
 
-> Unified Python API to create, edit, template, search and compare Microsoft Word DOCX and Hancom Hangul HWPX documents. Python 3.10+. Release candidate 0.44.0rc1; not an MCP server or universal file converter.
+> Python document automation and review toolkit: template preflight, safe text replacement previews, and supported tracked text revisions for Microsoft Word DOCX; also handles Hancom Hangul HWPX. Python 3.10+. Version 0.44.0; not an MCP server or universal file converter.
 
 ## Start here
 - [Official docs](https://rydolabs.github.io/PyWPDoc/): introduction and setup

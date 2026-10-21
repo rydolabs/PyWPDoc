@@ -1,22 +1,64 @@
-# PyWPDoc API Manual
+# PyWPDoc — document automation and review
 
-**One Python API. Two editable document formats.** Create and automate Microsoft Word DOCX and Hancom HWPX files with the same public `Document` entry point.
+**Validate templates, preview text edits and create tracked revisions for Word DOCX in Python.** Hancom Hangul HWPX also supports the documented shared workflows.
 
-![DOCX and HWPX business document rendered by their native desktop applications](assets/readme/docx-hwpx-contract-comparison.png)
+**Install with one command (from 0.44.0):**
 
-*Verified synthetic contract PDF output from Microsoft Word and Hancom on Windows (2026-10-18); shown as illustrative QA evidence. Pixel-level layout parity is not guaranteed. The reorganized 0.44.0rc1 package passed focused Word/Hancom native QA; the historical screenshot shown here is not a screenshot from that new RC-specific run. See [native QA evidence](testing/native-qa-0440rc1-2026-10-18.md).*
+```bash
+pip install pywpdoc
+```
+
+The previously published `0.44.0rc1` prerelease still needs `pip install "pywpdoc[unified]==0.44.0rc1"` for DOCX. New `0.44.0` publication is a separate release step.
+
+## Quick examples
+
+**Template preflight and filling**
 
 ```python
 from pywpdoc import Document
-for fmt in ("docx", "hwpx"):
-    doc = Document.new(fmt)
-    doc.add_paragraph("Hello / 안녕하세요")
-    doc.save(f"hello.{fmt}")
+
+doc = Document.new("docx")
+doc.add_paragraph("Customer: {{customer.name}}")
+values = {"customer": {"name": "Acme Corp"}}
+
+check = doc.check_template(values)
+if not check.ok:
+    raise ValueError(check.missing_keys)
+doc.render_template(values)
+doc.save("contract.docx")
 ```
 
-The **same public entry point** supports portable document creation, tables, supported text automation and template operations. Some expert operations are format-specific; see [compatibility](compatibility.md).
+**Tracked revisions**
 
-Start with [installation](getting-started/installation.md), [quickstart](getting-started/quickstart.md), [AI agent task selection](agent-guide.md), or [한국어 가이드](ko/index.md). [API Reference](reference/document.md) describes exact signatures, return values, and limits.
+```python
+before = Document.new("docx")
+before.add_paragraph("Amount: 100")
+after = Document.new("docx")
+after.add_paragraph("Amount: 200")
+review = before.compare(after)
+review.save("changes.docx")
+```
 
-!!! info "Status"
-    Version `0.44.0rc1` is a **release candidate**, not yet published to PyPI. The [first successful GitHub CI](https://github.com/rydolabs/PyWPDoc/actions/runs/39132701860) passed across Ubuntu/Windows (Python 3.10–3.13), package builds and the MkDocs strict documentation build. The 0.44.0rc1 wheel also passed focused Windows Word/Hancom native roundtrip and long-document acceptance checks ([evidence](testing/native-qa-0440rc1-2026-10-18.md)). The current archive does not provide a new PDF-layout QA run, and PyPI publishing remains a separate manual release step.
+**Read-only replacement preview**: `doc.preview_replace("Old", "New")` reports candidates without changing the document. Use `replace_text()` only after review.
+
+## Verified native-document previews
+
+![Historical Windows Word contract PDF page](assets/readme/contract-word.png)
+
+![Historical Windows Word DOCX complex table PDF page](assets/readme/complex-tables-docx.png)
+
+![Historical Word DOCX and Hancom HWPX comparative PDF pages](assets/readme/docx-hwpx-contract-comparison.png)
+
+*These images are from earlier Windows Word/Hancom QA, not freshly generated 0.44.0 visual-QA results or a tracked-revision screenshot. [Provenance](assets/readme/PROVENANCE.md) · [Prior RC native test scope](testing/native-qa-0440rc1-2026-10-18.md).*
+
+## Jump straight to the right API
+
+- [Document API signatures and portable contract](reference/document.md)
+- [Template tags, preflight and rendering](guide/templates.md)
+- [Tracked Changes and comparison](guide/compare.md)
+- [Preview, find and replace](guide/search-replace.md)
+- [Installation](getting-started/installation.md) · [Runnable examples](getting-started/quickstart.md)
+- [Result types and exceptions](reference/results-errors.md)
+- [Coding agent API selector](agent-guide.md) · [한국어 가이드](ko/index.md)
+
+Some document structures and text boundaries are deliberately unsupported. `save()` does **not** convert formats, binary `.hwp` is unsupported, and layout equality is never guaranteed. [Compatibility](compatibility.md) · [Limitations](limitations.md).

@@ -1,23 +1,17 @@
-# Install
+# Installation
 
-For **both** formats after PyPI publication:
+## One command for Word DOCX and Hancom HWPX
 
-```bash
-python -m pip install "pywpdoc[unified]"
-```
-
-For **HWPX-only** creation/editing, after publication:
+**Version 0.44.0 and later:**
 
 ```bash
-python -m pip install pywpdoc
+pip install pywpdoc
 ```
 
-At the review-candidate stage, install from the provided wheel or locally from the reviewed source checkout:
+The default installation includes `lxml` and `python-docx` so both document formats work without an extra flag. The old `[unified]` extra remains accepted for existing scripts.
 
-```bash
-python -m pip install -e ".[unified]"
-```
+**Previously published prerelease `0.44.0rc1`:** its default dependencies are HWPX-only. To use DOCX on that older version, run `pip install "pywpdoc[unified]==0.44.0rc1"`. The `0.44.0` release has not been uploaded merely because this documentation changed.
 
-Requires **Python 3.10+**. The DOCX backend uses the optional `python-docx>=1.2,<2`; HWPX uses the package's own engine. Desktop Word/Hancom is **not required** to generate or edit files, but native rendering/COM validation requires the corresponding installed application.
+Requires Python **3.10+**. Microsoft Word/Hancom are not necessary for generating or editing files in Python; native rendering and Office COM validation require the corresponding desktop software.
 
-[Quickstart →](quickstart.md) · [Compatibility →](../compatibility.md)
+[Quickstart →](quickstart.md) · [Document API Reference →](../reference/document.md) · [Compatibility →](../compatibility.md)

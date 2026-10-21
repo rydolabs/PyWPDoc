@@ -1,6 +1,6 @@
 site_name: PyWPDoc — DOCX & HWPX Python API
 site_url: https://rydolabs.github.io/PyWPDoc/
-site_description: Verified user guide and API contract for PyWPDoc 0.44.0rc1
+site_description: Word DOCX document templates, tracked changes and safe editing Python API · PyWPDoc 0.44.0
 repo_url: https://github.com/rydolabs/PyWPDoc
 repo_name: rydolabs/PyWPDoc
 theme:
@@ -43,6 +43,7 @@ nav:
   - Compatibility: compatibility.md
   - Known limitations: limitations.md
   - Release automation: releasing.md
+  - Search discovery / repository Topics: discovery.md
   - 한국어 안내:
       - 시작: ko/index.md
       - AI 에이전트 가이드: ko/agent-guide.md
